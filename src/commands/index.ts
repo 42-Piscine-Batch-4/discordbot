@@ -7,6 +7,7 @@
 
 // Import the "ping" command module
 import * as ping from "./ping";
+import * as hamster from "./hamster";
 
 /**
  * Object containing all available commands.
@@ -14,4 +15,5 @@ import * as ping from "./ping";
  */
 export const commands = {
   ping,
+  hamster,
 };
