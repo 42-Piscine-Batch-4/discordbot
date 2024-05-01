@@ -120,7 +120,7 @@ You can read more about it in this [Tutorial](https://docs.github.com/en/pull-re
 2. `git pull` - Ensuring that my main branch is updated with the lastest changes.
 3. `git checkout -b <branch_name>` - Create a new branch to make my changes.
 4. I will then code and commit accordingly.
-5. `git merge origin/main` - After I'm done, I will merge my changes with the remote version of
+5. `git fetch && git merge origin/main` - After I'm done, I will merge my changes with the remote version of
    the `main` branch and fix any merge conflicts along the way.
 6. `git push` - I will then push my changes to the remote, my branch will then be uploaded to GitHub.
 7. Create pull request - Creating pull request and setting the merge target to `main` branch.
