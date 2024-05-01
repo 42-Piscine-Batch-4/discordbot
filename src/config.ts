@@ -16,10 +16,10 @@ dotenv.config();
 
 // Obtaining the values from the .env files specified in the root folder.
 // This is why, it is important that you have the .env file in the root else, an error will be thrown.
-const { BOT_TOKEN, CLIENT_ID } = process.env;
+const { BOT_TOKEN, CLIENT_ID, NIGHT_API_KEY } = process.env;
 
 // This is the error handling, which will throw an error if the .env values cannot be found.
-if (!BOT_TOKEN || !CLIENT_ID) {
+if (!BOT_TOKEN || !CLIENT_ID || !NIGHT_API_KEY) {
   throw new Error("Missing environment variables!");
 }
 
@@ -32,4 +32,5 @@ if (!BOT_TOKEN || !CLIENT_ID) {
 export const config = {
   BOT_TOKEN,
   CLIENT_ID,
+  NIGHT_API_KEY,
 };
