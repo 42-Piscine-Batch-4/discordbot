@@ -1,3 +1,11 @@
+/**
+ * deployCommands.ts
+ *
+ * This file contains functions to deploy application commands to a Discord guild.
+ * It retrieves command data from the "commands" module, interacts with the Discord REST API
+ * to update the guild's commands, and logs the process.
+ */
+
 import { map, values } from "lodash";
 import { commands } from "./commands";
 import { REST, Routes } from "discord.js";
