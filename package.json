@@ -21,5 +21,14 @@
   "bugs": {
     "url": "https://github.com/42-Piscine-Batch-4/discordbot/issues"
   },
-  "homepage": "https://github.com/42-Piscine-Batch-4/discordbot#readme"
+  "homepage": "https://github.com/42-Piscine-Batch-4/discordbot#readme",
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.2",
+    "tsx": "^4.8.2",
+    "typescript": "^5.4.5"
+  }
 }
