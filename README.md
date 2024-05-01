@@ -67,11 +67,7 @@ Thank you for considering contributing to our Discord bot project! Your contribu
 
 ## How to Contribute
 
-### 1. Fork the Repository
-
-Start by forking the repository to your GitHub account. This creates a copy of the project under your account that you can freely modify.
-
-### 2. Clone the Repository
+### 1. Clone the Repository
 
 Clone your forked repository to your local machine using the following command:
 
@@ -79,7 +75,7 @@ Clone your forked repository to your local machine using the following command:
 git clone https://github.com/your-username/discordbot.git
 ```
 
-### 3. Set Up Development Environment
+### 2. Set Up Development Environment
 
 Before making any changes, ensure you have Node.js and npm installed on your machine. Then, install project dependencies by running:
 
@@ -87,7 +83,7 @@ Before making any changes, ensure you have Node.js and npm installed on your mac
 npm install
 ```
 
-### 4. Making Changes
+### 3. Making Changes
 
 #### Adding a New Command
 
@@ -104,11 +100,11 @@ npm install
 
 - Test your changes thoroughly to ensure they work as expected. Interact with the bot in your Discord server to verify the functionality of your changes.
 
-### 5. Committing Changes
+### 4. Committing Changes
 
 Once you're satisfied with your changes, commit them with descriptive commit messages. Make sure to follow the [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) format if possible.
 
-### 6. Push Changes
+### 5. Push Changes
 
 The `main` branch will be protected, so you will not be able to `git push` to it.
 
@@ -131,7 +127,7 @@ You can read more about it in this [Tutorial](https://docs.github.com/en/pull-re
 8. Wait for approval.
 9. Done!
 
-### 7. Create a Pull Request
+### 6. Create a Pull Request
 
 Finally, navigate to your forked repository on GitHub and create a pull request (PR) from your branch to the `main` branch of the original repository. Provide a clear description of your changes in the PR.
 
