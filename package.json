@@ -1,0 +1,25 @@
+{
+  "name": "piscine-4-discordbot",
+  "version": "1.0.0",
+  "description": "More description to come!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/42-Piscine-Batch-4/discordbot.git"
+  },
+  "keywords": [
+    "Discord",
+    "Piscine",
+    "42",
+    "Student"
+  ],
+  "author": "Piscine 4",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/42-Piscine-Batch-4/discordbot/issues"
+  },
+  "homepage": "https://github.com/42-Piscine-Batch-4/discordbot#readme"
+}
