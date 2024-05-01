@@ -9,11 +9,15 @@
 import * as ping from "./ping";
 import * as hamster from "./hamster";
 
+//Import the "ten_queens" command
+import * as ten_queens from "./ten_queens";
+
 /**
  * Object containing all available commands.
  * Each property corresponds to a command module.
  */
 export const commands = {
-  ping,
-  hamster,
+    ping,
+    hamster,
+    ten_queens,
 };
