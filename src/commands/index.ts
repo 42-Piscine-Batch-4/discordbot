@@ -5,11 +5,16 @@
  * It exports an object containing all available commands, allowing easy access to each command module.
  */
 
-// Import the "ping" command module
-import * as ping from "./ping";
+// Import the "hamster" command
 import * as hamster from "./hamster";
 
-//Import the "ten_queens" command
+// Import the "ping" command
+import * as ping from "./ping";
+
+// Import the "sort_desc" command
+import * as sort_desc from "./sort_desc";
+
+// Import the "ten_queens" command
 import * as ten_queens from "./ten_queens";
 
 /**
@@ -17,7 +22,8 @@ import * as ten_queens from "./ten_queens";
  * Each property corresponds to a command module.
  */
 export const commands = {
-    ping,
     hamster,
+    ping,
+    sort_desc,
     ten_queens,
 };
