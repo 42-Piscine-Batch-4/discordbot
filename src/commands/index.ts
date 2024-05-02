@@ -7,12 +7,18 @@
 
 // Import the "ping" command module
 import * as ping from "./ping";
+
+// Import the "hamster" command module
 import * as hamster from "./hamster";
 
 //Import the "ten_queens" command
 import * as ten_queens from "./ten_queens";
+
 //Import the "echo" command
 import * as echo from "./echo";
+
+//import the "rev" command
+import * as rev from "./rev";
 
 /**
  * Object containing all available commands.
@@ -22,5 +28,6 @@ export const commands = {
     ping,
     hamster,
     ten_queens,
-    echo
+    echo,
+    rev,
 };
