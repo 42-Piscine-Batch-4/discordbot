@@ -17,7 +17,7 @@ const COMMAND_NAME = "ten_queens";
  */
 export const data = new SlashCommandBuilder()
     .setName(COMMAND_NAME)
-    .setDescription("Replies with Hell No!");
+    .setDescription("Executes the ten_queens function");
 
 /**
  * Executes the "ten_queens" command.
