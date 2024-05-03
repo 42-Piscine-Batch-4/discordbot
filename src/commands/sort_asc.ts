@@ -12,13 +12,13 @@ export const data = new SlashCommandBuilder()
   .setName(COMMAND_NAME)
   .setDescription("Sorts integers in ascending order")
   .addStringOption((option) =>
-    option.setName("inputlist").setDescription("Input list").setRequired(true)
+    option.setName("inputlist").setDescription("Input list").setRequired(true),
   )
   .addStringOption((option) =>
     option
       .setName("delimiter")
       .setDescription("[Optional] Choose a delimiter (/s for space)")
-      .setRequired(false)
+      .setRequired(false),
   );
 
 export const execute = async (interaction: ChatInputCommandInteraction) => {
@@ -43,10 +43,10 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
           .trim()
           .split(/\s+/)
           .join(
-            separator(inputDelimiter)
+            separator(inputDelimiter),
           )}\`\`\`\nin ascending order: \`\`\`${intArray.join(
-          separator(inputDelimiter)
-        )}\`\`\``
+          separator(inputDelimiter),
+        )}\`\`\``,
       );
     }
   }
