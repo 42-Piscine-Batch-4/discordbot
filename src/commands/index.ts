@@ -13,6 +13,8 @@ import * as hamster from "./hamster";
 import * as ten_queens from "./ten_queens";
 //Import the "echo" command
 import * as echo from "./echo";
+//Import the "dice" command
+import * as dice from "./dice";
 
 /**
  * Object containing all available commands.
@@ -22,5 +24,6 @@ export const commands = {
     ping,
     hamster,
     ten_queens,
-    echo
+    echo,
+    dice
 };
