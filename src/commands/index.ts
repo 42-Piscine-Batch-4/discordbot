@@ -23,15 +23,19 @@ import * as sort_desc from "./sort_desc";
 // Import the "ten_queens" command
 import * as ten_queens from "./ten_queens";
 
+//Import the "dice" command
+import * as dice from "./dice";
+
 /**
  * Object containing all available commands.
  * Each property corresponds to a command module.
  */
 export const commands = {
+    echo,
     hamster,
     ping,
+    rev,
     sort_desc,
     ten_queens,
-    echo,
-    rev,
+    dice
 };
