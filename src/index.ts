@@ -40,7 +40,7 @@ client.on("interactionCreate", async (interaction): Promise<void> => {
   // By checking if `commandName` is a valid key in the `commands` object, we ensure that it's a registered command
   if (commands[commandName as keyof typeof commands]) {
     // Execute the command if it exists
-    commands[commandName as keyof typeof commands].execute(interaction);
+    commands[commandName as keyof typeof commands].execute(interaction as any);
   }
 });
 

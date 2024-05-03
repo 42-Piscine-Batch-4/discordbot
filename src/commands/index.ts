@@ -16,6 +16,8 @@ import * as sort_desc from "./sort_desc";
 
 // Import the "ten_queens" command
 import * as ten_queens from "./ten_queens";
+//Import the "echo" command
+import * as echo from "./echo";
 
 /**
  * Object containing all available commands.
@@ -26,4 +28,5 @@ export const commands = {
     ping,
     sort_desc,
     ten_queens,
+    echo
 };

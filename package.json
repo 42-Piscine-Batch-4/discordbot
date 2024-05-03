@@ -1,12 +1,13 @@
 {
   "name": "piscine-4-discordbot",
-  "version": "0.0.1",
+  "version": "1.0.3",
   "description": "More description to come!",
   "main": "src/index.ts",
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsup src/index.ts --minify",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "prod": "npm run build && npm run start"
   },
   "repository": {
     "type": "git",
