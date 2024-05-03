@@ -20,6 +20,9 @@ import * as echo from "./echo";
 //import the "rev" command
 import * as rev from "./rev";
 
+//Import the "dice" command
+import * as dice from "./dice";
+
 /**
  * Object containing all available commands.
  * Each property corresponds to a command module.
@@ -30,4 +33,5 @@ export const commands = {
     ten_queens,
     echo,
     rev,
+    dice
 };
