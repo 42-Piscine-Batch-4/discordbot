@@ -1,8 +1,12 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
 
 const COMMAND_NAME = "sort_asc";
-const defaultSeparator = ", ";
-let separator = defaultSeparator;
+const separator = (checkDelimiter: string | null) => {
+  if (!checkDelimiter) {
+    return ", ";
+  }
+  return checkDelimiter?.replace(/\/s/g, " ");
+};
 
 export const data = new SlashCommandBuilder()
   .setName(COMMAND_NAME)
@@ -23,11 +27,7 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
 
   // This checks if the user input an optional delimiter
   const inputDelimiter = interaction.options.getString("delimiter");
-  if (inputDelimiter) {
-    separator = inputDelimiter.replace(/\/s/g, " ");
-  }
 
-  // Idk why typescript complains without the if check it's literally setRequired(true)
   if (userInput) {
     const intArray = userInput
       .trim()
@@ -42,12 +42,12 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
         `Certainly! I will sort the following \`\`\`${userInput
           .trim()
           .split(/\s+/)
-          .join(separator)}\`\`\`\nin ascending order: \`\`\`${intArray.join(
-          separator
+          .join(
+            separator(inputDelimiter)
+          )}\`\`\`\nin ascending order: \`\`\`${intArray.join(
+          separator(inputDelimiter)
         )}\`\`\``
       );
     }
-    // Reset the separator back to default
-    separator = defaultSeparator;
   }
 };
