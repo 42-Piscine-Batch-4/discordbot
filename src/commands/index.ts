@@ -43,4 +43,5 @@ export const commands = {
   sort_asc,
   ten_queens,
   dice,
+  shout,
 };
