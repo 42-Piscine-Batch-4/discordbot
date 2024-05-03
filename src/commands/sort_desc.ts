@@ -10,7 +10,7 @@ export const data = new SlashCommandBuilder()
   );
 
 export const execute = async (interaction: ChatInputCommandInteraction) => {
-  const input: String = interaction.options.getString("input");
+  const input: String = interaction.options.getString("input", true);
   const strsplit = input
     .split(/ |\t|\f|\n|\r|\v/)
     .filter((c) => c)

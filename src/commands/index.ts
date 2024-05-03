@@ -24,8 +24,11 @@ import * as sort_asc from "./sort_asc";
 // Import the "ten_queens" command
 import * as ten_queens from "./ten_queens";
 
-//Import the "dice" command
+// Import the "dice" command
 import * as dice from "./dice";
+
+// Import the "shout" command
+import * as shout from "./shout";
 
 /**
  * Object containing all available commands.
