@@ -30,6 +30,9 @@ import * as dice from "./dice";
 // Import the "shout" command
 import * as shout from "./shout";
 
+// Import the "calc" command
+import * as calc from "./calc"; 
+
 /**
  * Object containing all available commands.
  * Each property corresponds to a command module.
@@ -44,4 +47,5 @@ export const commands = {
   ten_queens,
   dice,
   shout,
+  calc,
 };
