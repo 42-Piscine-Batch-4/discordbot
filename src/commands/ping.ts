@@ -6,7 +6,11 @@
  * It utilizes the Discord.js library for interacting with the Discord API.
  */
 
-import { CommandInteraction, SlashCommandBuilder } from "discord.js";
+import {
+  ChatInputCommandInteraction,
+  CommandInteraction,
+  SlashCommandBuilder,
+} from "discord.js";
 
 // Name of the command
 const COMMAND_NAME = "ping";
@@ -23,7 +27,6 @@ export const data = new SlashCommandBuilder()
  * Executes the "ping" command.
  * @param {CommandInteraction} interaction - The interaction event triggered by the command.
  */
-export const execute = async (interaction: CommandInteraction) => {
-  // Reply to the interaction with "PONG!"
-  interaction.reply("PONG!");
+export const execute = async (interaction: ChatInputCommandInteraction) => {
+  const message = interaction.options.getString("message", true);
 };

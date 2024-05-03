@@ -31,11 +31,11 @@ import * as dice from "./dice";
  * Each property corresponds to a command module.
  */
 export const commands = {
-    echo,
-    hamster,
-    ping,
-    rev,
-    sort_desc,
-    ten_queens,
-    dice
+  echo,
+  hamster,
+  ping,
+  rev,
+  sort_desc,
+  ten_queens,
+  dice,
 };
