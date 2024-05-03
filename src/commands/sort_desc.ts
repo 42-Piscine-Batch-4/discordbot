@@ -1,4 +1,4 @@
-import { SlashCommandBuilder } from "discord.js";
+import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
 
 const COMMAND_NAME = "sort_desc";
 
@@ -11,7 +11,7 @@ export const data = new SlashCommandBuilder()
         .setDescription("raw user input.")
         .setRequired(true));
 
-export const execute = async (interaction) => {
+export const execute = async (interaction: ChatInputCommandInteraction) => {
     const input: String = interaction.options.getString("input");
     const strsplit = input.split(/ |\t|\f|\n|\r|\v/).filter(c => c).map(c => parseInt(c));
     if (strsplit.includes(NaN)) {
