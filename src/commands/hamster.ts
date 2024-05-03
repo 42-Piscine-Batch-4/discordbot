@@ -16,7 +16,7 @@ export const execute = async (interaction: CommandInteraction) => {
       headers: {
         Authorization: config.NIGHT_API_KEY,
       },
-    }
+    },
   );
   interaction.reply(get(data, "content.url"));
 };

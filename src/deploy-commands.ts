@@ -35,7 +35,7 @@ type DeployCommandProps = {
  * @returns {Promise<void>} A Promise that resolves once the commands are deployed successfully.
  */
 export const deployCommands = async (
-  props: DeployCommandProps
+  props: DeployCommandProps,
 ): Promise<void> => {
   const { guildId } = props;
 

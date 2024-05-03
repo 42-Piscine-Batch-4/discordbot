@@ -16,14 +16,14 @@ const COMMAND_NAME = "ten_queens";
  * This includes the command name and description.
  */
 export const data = new SlashCommandBuilder()
-    .setName(COMMAND_NAME)
-    .setDescription("Executes the ten_queens function");
+  .setName(COMMAND_NAME)
+  .setDescription("Executes the ten_queens function");
 
 /**
  * Executes the "ten_queens" command.
  * @param {CommandInteraction} interaction - The interaction event triggered by the command.
  */
 export const execute = async (interaction: CommandInteraction) => {
-    // Reply to the interaction with "Hell No!"
-    interaction.reply("Hell No!");
+  // Reply to the interaction with "Hell No!"
+  interaction.reply("Hell No!");
 };
