@@ -30,8 +30,13 @@ import * as dice from "./dice";
 // Import the "shout" command
 import * as shout from "./shout";
 
+
 // Import the "calc" command
 import * as calc from "./calc"; 
+
+// Import the "rps" command
+import * as rps from "./rps";
+
 
 /**
  * Object containing all available commands.
@@ -48,4 +53,5 @@ export const commands = {
   dice,
   shout,
   calc,
+  rps,
 };
