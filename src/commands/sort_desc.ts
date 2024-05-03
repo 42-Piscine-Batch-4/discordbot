@@ -12,7 +12,7 @@ export const data = new SlashCommandBuilder()
         .setRequired(true));
 
 export const execute = async (interaction: ChatInputCommandInteraction) => {
-    const input: String = interaction.options.getString("input");
+    const input: String = interaction.options.getString("input", true);
     const strsplit = input.split(/ |\t|\f|\n|\r|\v/).filter(c => c).map(c => parseInt(c));
     if (strsplit.includes(NaN)) {
       await interaction.reply("Invalid argument: only digits!");
