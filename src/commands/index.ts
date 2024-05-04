@@ -37,6 +37,9 @@ import * as calc from "./calc";
 // Import the "rps" command
 import * as rps from "./rps";
 
+// Import the "member_count" command
+import * as member_count from "./member_count";
+
 
 /**
  * Object containing all available commands.
@@ -54,4 +57,5 @@ export const commands = {
   shout,
   calc,
   rps,
+  member_count,
 };
