@@ -7,48 +7,45 @@
  * It utilizes the Discord.js library for interacting with the Discord API.
  */
 
-import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
-import reverseString from "../utils/reverse-string";
+import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js"
+import { replace } from "lodash"
+import reverseString from "../utils/reverse-string"
 
+const OPTION_NAME = "message"
 
 //command name and data
-const COMMAND_NAME = "palindrome";
+const COMMAND_NAME = "palindrome"
 export const data = new SlashCommandBuilder()
-    .setName(COMMAND_NAME)
-    .setDescription("Checks if the message is a palindrome")
-    .addStringOption((option) =>
+  .setName(COMMAND_NAME)
+  .setDescription("Checks if the message is a palindrome")
+  .addStringOption((option) =>
     option
-        .setName("Message")
-        .setDescription("Message to find a palindrome")
-        .setRequired(true)
-    );
+      .setName(OPTION_NAME)
+      .setDescription("Message to find a palindrome")
+      .setRequired(true)
+  )
 
 //function to remove all puncation and space
-function stripPunctuationSpaces(text: string): string {
-    // Regular expression to match punctuation and spaces
-    const regex = /[^\w\s]/g;
-    return text.replace(regex, "");
-};
-
+const stripPunctuationSpaces = (text: string): string => {
+  // Regular expression to match punctuation and spaces
+  const regex = /\W/g
+  return replace(text, regex, "")
+}
 
 //excute the palindrome command
-export const excute = async (interaction: ChatInputCommandInteraction) => {
+export const execute = async (interaction: ChatInputCommandInteraction) => {
+  //save input to message variable
+  const message = interaction.options.getString(OPTION_NAME, true)
 
-    //save input to message variable
-    const message = interaction.options.getString("Message", true);
+  //strip message to characters only
+  const string = stripPunctuationSpaces(message)
 
-    //strip message to characters only
-    const string = stripPunctuationSpaces(message);
+  //call function reverseString to palindrome
+  const palindrome = reverseString(string)
 
-    //call function reverseString to palindrome
-    const palindrome = reverseString(string);
-
-    if(palindrome == string)
-    {
-        await interaction.reply(`Wow! ${message}`);
-    }
-    else
-    {
-        await interaction.reply(`${message} is not a palindrome :|`);
-    }
+  if (palindrome == string) {
+    await interaction.reply(`Wow! ${message}`)
+  } else {
+    await interaction.reply(`${message} is not a palindrome :|`)
+  }
 }
