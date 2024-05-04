@@ -27,7 +27,7 @@ export const data = new SlashCommandBuilder()
 function stripPunctuationSpaces(text: string): string {
     // Regular expression to match punctuation and spaces
     const regex = /[^\w\s]/g;
-    return text.replace(regex, "");
+    return text.replace(regex, "").toLowerCase();
 };
 
 
