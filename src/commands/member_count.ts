@@ -1,4 +1,4 @@
-import { ChatInputCommandInteraction, SlashCommandBuilder, GuildMember } from "discord.js";
+import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
 
 export const data = new SlashCommandBuilder()
     .setName("member_count")
