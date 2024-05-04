@@ -1,10 +1,10 @@
-import { CommandInteraction, SlashCommandBuilder } from "discord.js";
+import { CommandInteraction, SlashCommandBuilder } from "discord.js"
 
-const COMMAND_NAME = "icon_42";
+const COMMAND_NAME = "icon_42"
 
 export const data = new SlashCommandBuilder()
   .setName(COMMAND_NAME)
-  .setDescription("Delivers a URL to the 42 icon");
+  .setDescription("Delivers a URL to the 42 icon")
 
 /**
  * Executes the "icon_42" command.
@@ -13,6 +13,6 @@ export const data = new SlashCommandBuilder()
 export const execute = async (interaction: CommandInteraction) => {
   // Reply with URL to the 42 icon
   interaction.reply(
-    "https://www.42singapore.sg/wp-content/uploads/2023/02/42SingaporeLogo-Black.svg"
-  );
-};
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS2NAGtlAgDehBnS7KFd34hVRF4edBXX0RmxeiuHi9Qw&s"
+  )
+}
