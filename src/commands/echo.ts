@@ -9,10 +9,10 @@
  *Bot's response will include original message, and info about who invoked.
  */
 
-import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
+import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js"
 
 //Name of the command
-const COMMAND_NAME = "echo";
+const COMMAND_NAME = "echo"
 
 /**
  * Represents the data required to define the "echo" command.
@@ -25,8 +25,8 @@ export const data = new SlashCommandBuilder()
     option
       .setName("message")
       .setDescription("The message to echo")
-      .setRequired(true),
-  );
+      .setRequired(true)
+  )
 
 /**
  * Executes the "echo" command.
@@ -35,9 +35,9 @@ export const data = new SlashCommandBuilder()
 
 export const execute = async (interaction: ChatInputCommandInteraction) => {
   //retrieve message from interaction options
-  const message = interaction.options.getString("message", true); //true ensures that the option is required
+  const message = interaction.options.getString("message", true) //true ensures that the option is required
   //construct response message
-  const response = `**Echoed Message:** ${message}\n**Invoked by:** ${interaction.user.tag}`;
+  const response = `**Echoed Message:** ${message}\n**Invoked by:** ${interaction.user.tag}`
   //reply to interaction with echoed message and user info
-  await interaction.reply(response);
-};
+  await interaction.reply(response)
+}
