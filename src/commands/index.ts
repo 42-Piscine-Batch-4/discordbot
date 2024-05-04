@@ -45,6 +45,6 @@ export const commands = {
   display_image,
   honkai_gacha,
   avatar,
-  last,
   palindrome,
+  last,
 }
