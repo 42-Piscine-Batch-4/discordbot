@@ -1,7 +1,7 @@
 import { Client, Guild } from "discord.js"
-import { deployCommands } from "./deploy-commands"
 import { commands } from "./commands"
 import { config } from "./config"
+import { deployCommands } from "./deploy-commands"
 
 // Create a new Discord client instance
 const client = new Client({
