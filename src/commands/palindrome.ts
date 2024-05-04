@@ -24,9 +24,7 @@ export const data = new SlashCommandBuilder()
 
 //function to remove all puncation and space
 function stripPunctuationSpaces(text: string): string {
-  // Regular expression to match punctuation and spaces
-  const regex = /[^\w\s]_/g
-  return text.replace(regex, "").toLowerCase()
+  return text.replace(/[^\w\s]_/g, "").toLowerCase()
 }
 
 //excute the palindrome command
