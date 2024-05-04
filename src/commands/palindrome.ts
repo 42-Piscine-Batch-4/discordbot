@@ -40,7 +40,6 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
 
   //strip message to characters only
   const user = stripPunctuationSpaces(message)
-  console.log("roby -> execute -> user:", user)
 
   //call function reverseString to palindrome
   const palindrome = reverseString(user)
