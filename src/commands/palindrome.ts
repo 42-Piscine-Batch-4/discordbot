@@ -8,7 +8,8 @@
  */
 
 import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js"
-import { lowerCase, replace } from "lodash"
+import { replace, toLower } from "lodash"
+import outputCode from "../utils/output-code"
 import reverseString from "../utils/reverse-string"
 
 const OPTION_NAME = "message"
@@ -29,7 +30,7 @@ export const data = new SlashCommandBuilder()
 const stripPunctuationSpaces = (text: string): string => {
   // Regular expression to match punctuation and spaces
   const regex = /\W/g
-  return lowerCase(replace(text, regex, ""))
+  return toLower(replace(text, regex, ""))
 }
 
 //excute the palindrome command
@@ -39,13 +40,18 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
 
   //strip message to characters only
   const user = stripPunctuationSpaces(message)
+  console.log("roby -> execute -> user:", user)
 
   //call function reverseString to palindrome
   const palindrome = reverseString(user)
 
   if (palindrome == user) {
-    await interaction.reply(`Now THIS, is a palindrome: ${message}`)
+    await interaction.reply(
+      `🤯🤯 PALINDROME FOUND 🤯🤯\n${outputCode(message + " <-- is a palindrome!")}`
+    )
   } else {
-    await interaction.reply(`${message} is not a palindrome :|`)
+    await interaction.reply(
+      `😡😡 PALINDROME NOT FOUND 😡😡\n${outputCode(message + " <-- is not a palindrome!")}`
+    )
   }
 }
