@@ -6,19 +6,11 @@ export const data = new SlashCommandBuilder()
   .setName(COMMAND_NAME)
   .setDescription("Sorts list of integers in descending order.")
   .addStringOption((option) =>
-    option.setName("input").setDescription("raw user input.").setRequired(true),
+    option.setName("input").setDescription("raw user input.").setRequired(true)
   );
 
-interface Array<T> {
-  joinstr(): string;
-}
-
-Array.prototype.joinstr = function () {
-  return `\`\`\`${this.join(", ")}\`\`\``;
-};
-
 export const execute = async (interaction: ChatInputCommandInteraction) => {
-  const input: String = interaction.options.getString("input", true);
+  const input: string = interaction.options.getString("input", true);
   const strsplit = input
     .split(/\s/)
     .filter((c) => c)
@@ -29,9 +21,9 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
     const finum = strsplit
       .slice()
       .sort((a, b) => b - a)
-      .joinstr();
+      .join(", ");
     await interaction.reply(
-      `initial list:${strsplit.joinstr()}\nsorted array:${finum}`,
+      `Initial list:${strsplit.join(", ")}\nSorted array:${finum}`
     );
   }
 };
