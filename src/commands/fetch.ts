@@ -31,7 +31,6 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
       "\n"
     )
     await interaction.reply(`FETCH SUCCESS!\n${outputCode(output)}`)
-    await interaction.reply(`FETCH SUCCESS!\n${outputCode(output)}`)
   } catch (err) {
     await interaction.reply(`FETCH ERROR!\n${outputCode(toString(err))}`)
   }
