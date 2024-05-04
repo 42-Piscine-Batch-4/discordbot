@@ -14,8 +14,8 @@ export const data = new SlashCommandBuilder()
     option
       .setName(OPTION_NAME)
       .setDescription("The URL to be fetched")
-      .setRequired(true),
-  );
+      .setRequired(true)
+  )
 
 export const execute = async (interaction: ChatInputCommandInteraction) => {
   try {
@@ -28,9 +28,9 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
     const { data } = res
     const output = join(
       map(data, (datum) => JSON.stringify(datum, null, "\t")),
-      "\n",
-    );
-    await interaction.reply(`FETCH SUCCESS!\n${outputCode(output)}`);
+      "\n"
+    )
+    await interaction.reply(`FETCH SUCCESS!\n${outputCode(output)}`)
     await interaction.reply(`FETCH SUCCESS!\n${outputCode(output)}`)
   } catch (err) {
     await interaction.reply(`FETCH ERROR!\n${outputCode(toString(err))}`)

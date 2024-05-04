@@ -10,8 +10,8 @@ export const data = new SlashCommandBuilder()
   .setName(COMMAND_NAME)
   .setDescription("Plays rock paper scissors.")
   .addStringOption((option) =>
-    option.setName("input").setDescription("raw user input.").setRequired(true),
-  );
+    option.setName("input").setDescription("raw user input.").setRequired(true)
+  )
 
 const rpsToNumber = (input: string) => {
   switch (input) {

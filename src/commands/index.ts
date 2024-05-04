@@ -5,6 +5,7 @@
  * It exports an object containing all available commands, allowing easy access to each command module.
  */
 
+import * as avatar from "./avatar"
 import * as calc from "./calc"
 import * as dice from "./dice"
 import * as display_image from "./display_image"
@@ -20,9 +21,6 @@ import * as shout from "./shout"
 import * as sort_asc from "./sort_asc"
 import * as sort_desc from "./sort_desc"
 import * as ten_queens from "./ten_queens"
-
-// Import the "avatar" command
-import * as avatar from "./avatar";
 
 /**
  * Object containing all available commands.
@@ -45,4 +43,4 @@ export const commands = {
   display_image,
   honkai_gacha,
   avatar,
-};
+}
