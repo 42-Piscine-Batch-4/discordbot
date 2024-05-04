@@ -11,6 +11,9 @@ import * as echo from "./echo";
 // Import the "hamster" command
 import * as hamster from "./hamster";
 
+// Import the "fetch" command
+import * as fetch from "./fetch";
+
 // Import the "ping" command
 import * as ping from "./ping";
 
@@ -45,6 +48,7 @@ import * as display_image from "./display_image";
  */
 export const commands = {
   echo,
+  fetch,
   hamster,
   ping,
   rev,
