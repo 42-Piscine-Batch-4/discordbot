@@ -37,6 +37,8 @@ import * as calc from "./calc";
 // Import the "rps" command
 import * as rps from "./rps";
 
+// import the "icon_42" command
+import * as icon_42 from "./icon_42";
 
 /**
  * Object containing all available commands.
@@ -54,4 +56,5 @@ export const commands = {
   shout,
   calc,
   rps,
+  icon_42,
 };
