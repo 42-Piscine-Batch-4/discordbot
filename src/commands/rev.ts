@@ -6,12 +6,7 @@
  * It utilizes the Discord.js library for interacting with the Discord API.
  */
 
-import {
-  ChatInputCommandInteraction,
-  CommandInteraction,
-  Message,
-  SlashCommandBuilder,
-} from "discord.js";
+import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
 
 // Name of command
 const COMMAND_NAME = "rev";
@@ -27,7 +22,7 @@ export const data = new SlashCommandBuilder()
     option
       .setName("message")
       .setDescription("The message to reverse")
-      .setRequired(true),
+      .setRequired(true)
   );
 
 /**

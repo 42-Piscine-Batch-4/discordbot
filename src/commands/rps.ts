@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
-import { random, size } from "lodash";
+import { random } from "lodash";
 
 const COMMAND_NAME = "rps";
 const ROCK: string = "ROCK";
