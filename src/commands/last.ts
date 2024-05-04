@@ -14,6 +14,10 @@ const SEARCH_RANGE = 100
 
 const tagReverse = "rev"
 const tagShout = "shout"
+const tagBold = "bold"
+const tagItalics = "italics"
+const tagStrike = "strikethrough"
+const tagSpoil = "spoiler"
 
 /**Checks through all fetched messages where author matches the target we're searching for*/
 const findMessage = (
@@ -27,13 +31,22 @@ const findMessage = (
 
 /**Adds an operation to modify the string if necessary */
 const parseMessage = (inputMessage: string, opChoice: string | null) => {
+	const prepend = `said:\n\n`;
   switch (opChoice) {
     case tagReverse:
       return `dias:\n\n${reverseString(inputMessage)}`
     case tagShout:
       return `shouted:\n\n${capitalizeString(inputMessage)}`
+	case tagBold:
+		return `${prepend}**${inputMessage}**`
+	case tagItalics:
+		return `${prepend}*${inputMessage}*`
+	case tagStrike:
+		return `${prepend}~~${inputMessage}~~`
+	case tagSpoil:
+		return `${prepend}||${inputMessage}||`
     default:
-      return `said:\n\n${inputMessage}`
+      return `${prepend}${inputMessage}`
   }
 }
 
@@ -55,7 +68,11 @@ export const data = new SlashCommandBuilder()
       .setRequired(false)
       .addChoices(
         { name: "reverse", value: tagReverse },
-        { name: "shout", value: tagShout }
+        { name: "shout", value: tagShout },
+		{ name: "bold", value: tagBold },
+		{ name: "italics", value: tagItalics},
+		{ name: "strikethrough", value: tagStrike},
+		{ name: "spoiler", value: tagSpoil},
       )
   )
 
@@ -90,7 +107,7 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
   } else {
     const finalMessage = parseMessage(foundMessage.content, opChoice)
     const embedMessage = new EmbedBuilder()
-      .setTitle("Last message")
+      .setTitle("Last message").setURL(foundMessage.url)
       .setColor("Random")
       .setAuthor({
         name: foundMessage.author.displayName,
