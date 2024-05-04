@@ -1,6 +1,6 @@
 {
   "name": "piscine-4-discordbot",
-  "version": "1.0.7",
+  "version": "1.1.0",
   "description": "More description to come!",
   "main": "src/index.ts",
   "scripts": {
