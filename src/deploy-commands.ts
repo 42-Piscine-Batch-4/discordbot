@@ -6,9 +6,9 @@
  * to update the guild's commands, and logs the process.
  */
 
+import { REST, Routes } from "discord.js"
 import { map, values } from "lodash"
 import { commands } from "./commands"
-import { REST, Routes } from "discord.js"
 import { config } from "./config"
 
 /**

@@ -1,7 +1,7 @@
 import axios from "axios"
 import { CommandInteraction, SlashCommandBuilder } from "discord.js"
-import { config } from "../config"
 import { get } from "lodash"
+import { config } from "../config"
 
 const COMMAND_NAME = "hamster"
 

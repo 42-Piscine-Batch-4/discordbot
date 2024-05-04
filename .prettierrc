@@ -1,4 +1,5 @@
 {
   "semi": false,
-  "trailingComma": "es5"
+  "trailingComma": "es5",
+  "plugins": ["prettier-plugin-organize-imports"]
 }
