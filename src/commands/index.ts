@@ -5,41 +5,23 @@
  * It exports an object containing all available commands, allowing easy access to each command module.
  */
 
-// Import the "echo" command
-import * as echo from "./echo";
-
-// Import the "hamster" command
-import * as hamster from "./hamster";
-
-// Import the "ping" command
-import * as ping from "./ping";
-
-// Import the "rev" command
-import * as rev from "./rev";
-
-// Import the "sort_desc" and "sort_asc" commands
-import * as sort_desc from "./sort_desc";
-import * as sort_asc from "./sort_asc";
-
-// Import the "ten_queens" command
-import * as ten_queens from "./ten_queens";
-
-// Import the "dice" command
-import * as dice from "./dice";
-
-// Import the "shout" command
-import * as shout from "./shout";
-
-// Import the "calc" command
-import * as calc from "./calc";
-
-// Import the "rps" command
-import * as rps from "./rps";
-
-// Import the "display_image" command
-import * as display_image from "./display_image";
-// Import the "last" command
-import * as last from "./last";
+import * as avatar from "./avatar"
+import * as calc from "./calc"
+import * as dice from "./dice"
+import * as display_image from "./display_image"
+import * as echo from "./echo"
+import * as fetch from "./fetch"
+import * as hamster from "./hamster"
+import * as honkai_gacha from "./honkai_gacha"
+import * as icon_42 from "./icon_42"
+import * as last from "./last"
+import * as ping from "./ping"
+import * as rev from "./rev"
+import * as rps from "./rps"
+import * as shout from "./shout"
+import * as sort_asc from "./sort_asc"
+import * as sort_desc from "./sort_desc"
+import * as ten_queens from "./ten_queens"
 
 /**
  * Object containing all available commands.
@@ -47,6 +29,7 @@ import * as last from "./last";
  */
 export const commands = {
   echo,
+  fetch,
   hamster,
   ping,
   rev,
@@ -57,6 +40,9 @@ export const commands = {
   shout,
   calc,
   rps,
-  last,
+  icon_42,
   display_image,
-};
+  honkai_gacha,
+  avatar,
+  last,
+}

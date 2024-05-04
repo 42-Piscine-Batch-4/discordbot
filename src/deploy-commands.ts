@@ -6,28 +6,28 @@
  * to update the guild's commands, and logs the process.
  */
 
-import { map, values } from "lodash";
-import { commands } from "./commands";
-import { REST, Routes } from "discord.js";
-import { config } from "./config";
+import { REST, Routes } from "discord.js"
+import { map, values } from "lodash"
+import { commands } from "./commands"
+import { config } from "./config"
 
 /**
  * Retrieves the data for all commands defined in the "commands" module.
  * @returns {Array} An array containing the data for all commands.
  */
 const commandsData = map(values(commands), (command) => {
-  return command.data;
-});
+  return command.data
+})
 
 // Initialize a new REST client for interacting with Discord API
-const rest = new REST({ version: "10" }).setToken(config.BOT_TOKEN);
+const rest = new REST({ version: "10" }).setToken(config.BOT_TOKEN)
 
 /**
  * Represents the properties required for deploying commands to a guild.
  */
 type DeployCommandProps = {
-  guildId: string; // The ID of the guild where commands will be deployed
-};
+  guildId: string // The ID of the guild where commands will be deployed
+}
 
 /**
  * Deploys the application commands to a specific guild.
@@ -35,20 +35,20 @@ type DeployCommandProps = {
  * @returns {Promise<void>} A Promise that resolves once the commands are deployed successfully.
  */
 export const deployCommands = async (
-  props: DeployCommandProps,
+  props: DeployCommandProps
 ): Promise<void> => {
-  const { guildId } = props;
+  const { guildId } = props
 
   try {
-    console.log("Started refreshing application's (/) commands.");
+    console.log("Started refreshing application's (/) commands.")
 
     // Update the guild's commands with the latest data
     await rest.put(Routes.applicationGuildCommands(config.CLIENT_ID, guildId), {
       body: commandsData,
-    });
+    })
 
-    console.log("Successfully reloaded application (/) commands.");
+    console.log("Successfully reloaded application (/) commands.")
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
-};
+}

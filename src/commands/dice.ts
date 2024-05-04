@@ -7,11 +7,11 @@
  *The bot should respond with the randomly generated number.
  */
 
-import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
-import { random } from "lodash";
+import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js"
+import { random } from "lodash"
 
 //Name of the command
-const COMMAND_NAME = "dice";
+const COMMAND_NAME = "dice"
 
 /**
  * Represents the data required to define the "dice" command.
@@ -19,7 +19,7 @@ const COMMAND_NAME = "dice";
  */
 export const data = new SlashCommandBuilder()
   .setName(COMMAND_NAME)
-  .setDescription("Generates random number between 1 and 6");
+  .setDescription("Generates random number between 1 and 6")
 
 /**
  * Executes the "echo" command.
@@ -28,8 +28,8 @@ export const data = new SlashCommandBuilder()
 
 export const execute = async (interaction: ChatInputCommandInteraction) => {
   //generates random number
-  const outcome = random(1, 6);
+  const outcome = random(1, 6)
   //reply to interaction with outcome of die roll
-  const response = `**${interaction.user.tag}** rolled a **${outcome}** on the die!`;
-  await interaction.reply(response);
-};
+  const response = `**${interaction.user.tag}** rolled a **${outcome}** on the die!`
+  await interaction.reply(response)
+}
