@@ -1,5 +1,5 @@
-import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js"
 import { calc } from "a-calc"
+import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js"
 
 const calculate = (expression: string): number | string => {
   try {

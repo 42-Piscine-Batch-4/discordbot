@@ -1,11 +1,11 @@
+import axios from "axios"
 import {
   CommandInteraction,
   EmbedBuilder,
   SlashCommandBuilder,
 } from "discord.js"
-import outputCode from "../utils/output-code"
 import { get, join, map, random, size, toString } from "lodash"
-import axios from "axios"
+import outputCode from "../utils/output-code"
 
 const COMMAND_NAME = "honkai_gacha"
 const CHAR_BASE_URL = "https://hsr-api.vercel.app/api/v1/characters"
