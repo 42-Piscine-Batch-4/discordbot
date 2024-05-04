@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: "42 Bot Prod",
-      script: "npm i && rm -f package-lock.json && npm run prod",
+      script: "npm run prod",
       watch: ["./src"],
       ignore_watch: ["node_modules"],
     },
