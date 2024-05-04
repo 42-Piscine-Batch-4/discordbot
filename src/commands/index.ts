@@ -5,39 +5,21 @@
  * It exports an object containing all available commands, allowing easy access to each command module.
  */
 
-// Import the "echo" command
+import * as calc from "./calc";
+import * as dice from "./dice";
+import * as display_image from "./display_image";
 import * as echo from "./echo";
-
-// Import the "hamster" command
+import * as fetch from "./fetch";
 import * as hamster from "./hamster";
-
-// Import the "ping" command
+import * as honkai_gacha from "./honkai_gacha";
+import * as icon_42 from "./icon_42";
 import * as ping from "./ping";
-
-// Import the "rev" command
 import * as rev from "./rev";
-
-// Import the "sort_desc" and "sort_asc" commands
+import * as rps from "./rps";
+import * as shout from "./shout";
 import * as sort_asc from "./sort_asc";
 import * as sort_desc from "./sort_desc";
-
-// Import the "ten_queens" command
 import * as ten_queens from "./ten_queens";
-
-// Import the "dice" command
-import * as dice from "./dice";
-
-// Import the "shout" command
-import * as shout from "./shout";
-
-// Import the "calc" command
-import * as calc from "./calc";
-
-// Import the "rps" command
-import * as rps from "./rps";
-
-// import the "icon_42" command
-import * as icon_42 from "./icon_42";
 
 /**
  * Object containing all available commands.
@@ -45,6 +27,7 @@ import * as icon_42 from "./icon_42";
  */
 export const commands = {
   echo,
+  fetch,
   hamster,
   ping,
   rev,
@@ -56,4 +39,6 @@ export const commands = {
   calc,
   rps,
   icon_42,
+  display_image,
+  honkai_gacha,
 };

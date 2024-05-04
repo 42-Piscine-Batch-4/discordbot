@@ -6,21 +6,24 @@ export const data = new SlashCommandBuilder()
   .setName(COMMAND_NAME)
   .setDescription("Sorts list of integers in descending order.")
   .addStringOption((option) =>
-    option.setName("input").setDescription("raw user input.").setRequired(true),
+    option.setName("input").setDescription("raw user input.").setRequired(true)
   );
 
 export const execute = async (interaction: ChatInputCommandInteraction) => {
-  const input: String = interaction.options.getString("input", true);
+  const input: string = interaction.options.getString("input", true);
   const strsplit = input
-    .split(/ |\t|\f|\n|\r|\v/)
+    .split(/\s/)
     .filter((c) => c)
     .map((c) => parseInt(c));
   if (strsplit.includes(NaN)) {
     await interaction.reply("Invalid argument: only digits!");
   } else {
-    const finum = strsplit.slice().sort((a, b) => b - a);
+    const finum = strsplit
+      .slice()
+      .sort((a, b) => b - a)
+      .join(", ");
     await interaction.reply(
-      `initial list: ${strsplit}\nsorted array: ${finum}`,
+      `Initial list:${strsplit.join(", ")}\nSorted array:${finum}`
     );
   }
 };

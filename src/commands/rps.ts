@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
-import { random, size } from "lodash";
+import { random } from "lodash";
 
 const COMMAND_NAME = "rps";
 const ROCK: string = "ROCK";
@@ -51,7 +51,6 @@ const getOutput = (username: string, user: number, com: number) => {
 };
 
 const rpsToFullName = (input: string) => {
-  if (size(input) != 1) return input;
   switch (input) {
     case "R":
       return ROCK;
@@ -66,12 +65,9 @@ const rpsToFullName = (input: string) => {
 
 export const execute = async (interaction: ChatInputCommandInteraction) => {
   const input: string = interaction.options.getString("input", true);
-  const rawRps: string = input.trim().toUpperCase();
-  const rps = rpsToFullName(rawRps);
+  const rps: string = rpsToFullName(input.trim().toUpperCase());
   if (rps != ROCK && rps != PAPER && rps != SCISSORS) {
-    await interaction.reply(
-      "Input either R, P or S, or Rock, Paper, or Scissors."
-    );
+    await interaction.reply("Input either R/P/S, or Rock/Paper/Scissors.");
   } else {
     const com = random(1, 3);
     const user = rpsToNumber(rps);

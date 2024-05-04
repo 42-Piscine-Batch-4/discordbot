@@ -6,12 +6,8 @@
  * It utilizes the Discord.js library for interacting with the Discord API.
  */
 
-import {
-  ChatInputCommandInteraction,
-  CommandInteraction,
-  Message,
-  SlashCommandBuilder,
-} from "discord.js";
+import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
+import reverseString from "../utils/reverse-string";
 
 // Name of command
 const COMMAND_NAME = "rev";
@@ -27,22 +23,16 @@ export const data = new SlashCommandBuilder()
     option
       .setName("message")
       .setDescription("The message to reverse")
-      .setRequired(true),
+      .setRequired(true)
   );
 
 /**
  * Executes the "rev" command.
  * @param {ChatInputCommandInteraction} interaction - The interaction event triggered by the command.
  */
-
 export const execute = async (interaction: ChatInputCommandInteraction) => {
   //retrieve message from interaction options
   const message = interaction.options.getString("message", true); //true ensures that the option is required
-
-  // function to reverse message
-  function reverseString(str: String): string {
-    return str.split("").reverse().join("");
-  }
 
   // To call the function and put the results into reverseMessage
   const reversedMessage = reverseString(message);
