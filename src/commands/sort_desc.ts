@@ -9,18 +9,29 @@ export const data = new SlashCommandBuilder()
     option.setName("input").setDescription("raw user input.").setRequired(true),
   );
 
+interface Array<T> {
+  joinstr(): string;
+}
+
+Array.prototype.joinstr = function () {
+  return `\`\`\`${this.join(", ")}\`\`\``;
+};
+
 export const execute = async (interaction: ChatInputCommandInteraction) => {
   const input: String = interaction.options.getString("input", true);
   const strsplit = input
-    .split(/ |\t|\f|\n|\r|\v/)
+    .split(/\s/)
     .filter((c) => c)
     .map((c) => parseInt(c));
   if (strsplit.includes(NaN)) {
     await interaction.reply("Invalid argument: only digits!");
   } else {
-    const finum = strsplit.slice().sort((a, b) => b - a);
+    const finum = strsplit
+      .slice()
+      .sort((a, b) => b - a)
+      .joinstr();
     await interaction.reply(
-      `initial list: ${strsplit}\nsorted array: ${finum}`,
+      `initial list:${strsplit.joinstr()}\nsorted array:${finum}`,
     );
   }
 };
