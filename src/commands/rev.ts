@@ -23,7 +23,7 @@ export const data = new SlashCommandBuilder()
     option
       .setName("message")
       .setDescription("The message to reverse")
-      .setRequired(true)
+      .setRequired(true),
   );
 
 /**

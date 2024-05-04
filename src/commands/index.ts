@@ -42,6 +42,9 @@ import * as rps from "./rps";
 // Import the "display_image" command
 import * as display_image from "./display_image";
 
+// Import the "avatar" command
+import * as avatar from "./avatar";
+
 /**
  * Object containing all available commands.
  * Each property corresponds to a command module.
@@ -60,4 +63,5 @@ export const commands = {
   calc,
   rps,
   display_image,
+  avatar,
 };

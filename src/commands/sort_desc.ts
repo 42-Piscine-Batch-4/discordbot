@@ -6,7 +6,7 @@ export const data = new SlashCommandBuilder()
   .setName(COMMAND_NAME)
   .setDescription("Sorts list of integers in descending order.")
   .addStringOption((option) =>
-    option.setName("input").setDescription("raw user input.").setRequired(true)
+    option.setName("input").setDescription("raw user input.").setRequired(true),
   );
 
 export const execute = async (interaction: ChatInputCommandInteraction) => {
@@ -23,7 +23,7 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
       .sort((a, b) => b - a)
       .join(", ");
     await interaction.reply(
-      `Initial list:${strsplit.join(", ")}\nSorted array:${finum}`
+      `Initial list:${strsplit.join(", ")}\nSorted array:${finum}`,
     );
   }
 };
