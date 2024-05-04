@@ -20,8 +20,10 @@ const findMessage = (
 
 export const data = new SlashCommandBuilder()
   .setName(COMMAND_NAME)
-  .setDescription("Retrieves a user's last message")
-  .addStringOption((option) =>
+  .setDescription(
+    `Checks the last ${SEARCH_RANGE} messages for a user's last message`
+  )
+  .addUserOption((option) =>
     option
       .setName("user")
       .setDescription("Specify the User's ID")
