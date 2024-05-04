@@ -18,8 +18,8 @@ import * as ping from "./ping";
 import * as rev from "./rev";
 
 // Import the "sort_desc" and "sort_asc" commands
-import * as sort_desc from "./sort_desc";
 import * as sort_asc from "./sort_asc";
+import * as sort_desc from "./sort_desc";
 
 // Import the "ten_queens" command
 import * as ten_queens from "./ten_queens";
@@ -30,9 +30,8 @@ import * as dice from "./dice";
 // Import the "shout" command
 import * as shout from "./shout";
 
-
 // Import the "calc" command
-import * as calc from "./calc"; 
+import * as calc from "./calc";
 
 // Import the "rps" command
 import * as rps from "./rps";
