@@ -14,6 +14,7 @@ import * as fetch from "./fetch"
 import * as hamster from "./hamster"
 import * as honkai_gacha from "./honkai_gacha"
 import * as icon_42 from "./icon_42"
+import * as last from "./last"
 import * as ping from "./ping"
 import * as rev from "./rev"
 import * as rps from "./rps"
@@ -43,4 +44,5 @@ export const commands = {
   display_image,
   honkai_gacha,
   avatar,
+  last,
 }
