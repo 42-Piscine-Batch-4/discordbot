@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
-import { join, map, toString } from "lodash";
+import { isEmpty, join, map, toString } from "lodash";
 import outputCode from "../utils/output-code";
 
 const COMMAND_NAME: string = "fetch";
@@ -20,6 +20,7 @@ export const data = new SlashCommandBuilder()
 export const execute = async (interaction: ChatInputCommandInteraction) => {
   try {
     const url = interaction.options.getString(OPTION_NAME, true);
+    if (isEmpty(url)) throw new Error("Please input URL!");
     const res = await axios({
       method: DEFAULT_METHOD,
       url,
@@ -29,7 +30,7 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
       map(data, (datum) => JSON.stringify(datum, null, "\t")),
       "\n"
     );
-    await interaction.reply(output);
+    await interaction.reply(`FETCH SUCCESS!\n${outputCode(output)}`);
   } catch (err) {
     await interaction.reply(`FETCH ERROR!\n${outputCode(toString(err))}`);
   }
