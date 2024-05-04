@@ -6,10 +6,10 @@
  * It utilizes the Discord.js library for interacting with the Discord API.
  */
 
-import { CommandInteraction, SlashCommandBuilder } from "discord.js";
+import { CommandInteraction, SlashCommandBuilder } from "discord.js"
 
 // Name of the command
-const COMMAND_NAME = "ping";
+const COMMAND_NAME = "ping"
 
 /**
  * Represents the data required to define the "ping" command.
@@ -17,7 +17,7 @@ const COMMAND_NAME = "ping";
  */
 export const data = new SlashCommandBuilder()
   .setName(COMMAND_NAME)
-  .setDescription("Replies with PONG!");
+  .setDescription("Replies with PONG!")
 
 /**
  * Executes the "ping" command.
@@ -25,5 +25,5 @@ export const data = new SlashCommandBuilder()
  */
 export const execute = async (interaction: CommandInteraction) => {
   // Reply to the interaction with "PONG!"
-  interaction.reply("PONG!");
-};
+  interaction.reply("PONG!")
+}

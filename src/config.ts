@@ -9,18 +9,18 @@
  */
 
 /* IMPORTS */
-import dotenv from "dotenv";
+import dotenv from "dotenv"
 
 // Configuring dotenv which is a 3rd party library to enable the app to recognize .env files.
-dotenv.config();
+dotenv.config()
 
 // Obtaining the values from the .env files specified in the root folder.
 // This is why, it is important that you have the .env file in the root else, an error will be thrown.
-const { BOT_TOKEN, CLIENT_ID, NIGHT_API_KEY } = process.env;
+const { BOT_TOKEN, CLIENT_ID, NIGHT_API_KEY } = process.env
 
 // This is the error handling, which will throw an error if the .env values cannot be found.
 if (!BOT_TOKEN || !CLIENT_ID || !NIGHT_API_KEY) {
-  throw new Error("Missing environment variables!");
+  throw new Error("Missing environment variables!")
 }
 
 /**
@@ -33,4 +33,4 @@ export const config = {
   BOT_TOKEN,
   CLIENT_ID,
   NIGHT_API_KEY,
-};
+}

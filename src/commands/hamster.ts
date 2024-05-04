@@ -1,13 +1,13 @@
-import axios from "axios";
-import { CommandInteraction, SlashCommandBuilder } from "discord.js";
-import { config } from "../config";
-import { get } from "lodash";
+import axios from "axios"
+import { CommandInteraction, SlashCommandBuilder } from "discord.js"
+import { config } from "../config"
+import { get } from "lodash"
 
-const COMMAND_NAME = "hamster";
+const COMMAND_NAME = "hamster"
 
 export const data = new SlashCommandBuilder()
   .setName(COMMAND_NAME)
-  .setDescription("Sends a random picture of a hamster");
+  .setDescription("Sends a random picture of a hamster")
 
 export const execute = async (interaction: CommandInteraction) => {
   const { data } = await axios.get(
@@ -16,7 +16,7 @@ export const execute = async (interaction: CommandInteraction) => {
       headers: {
         Authorization: config.NIGHT_API_KEY,
       },
-    },
-  );
-  interaction.reply(get(data, "content.url"));
-};
+    }
+  )
+  interaction.reply(get(data, "content.url"))
+}
