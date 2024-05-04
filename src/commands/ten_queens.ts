@@ -6,10 +6,10 @@
  * It utilizes the Discord.js library for interacting with the Discord API.
  */
 
-import { CommandInteraction, SlashCommandBuilder } from "discord.js";
+import { CommandInteraction, SlashCommandBuilder } from "discord.js"
 
 //Name of command
-const COMMAND_NAME = "ten_queens";
+const COMMAND_NAME = "ten_queens"
 
 /**
  * Represents the data required to define the "ten_queens" command.
@@ -17,7 +17,7 @@ const COMMAND_NAME = "ten_queens";
  */
 export const data = new SlashCommandBuilder()
   .setName(COMMAND_NAME)
-  .setDescription("Executes the ten_queens function");
+  .setDescription("Executes the ten_queens function")
 
 /**
  * Executes the "ten_queens" command.
@@ -25,5 +25,5 @@ export const data = new SlashCommandBuilder()
  */
 export const execute = async (interaction: CommandInteraction) => {
   // Reply to the interaction with "Hell No!"
-  interaction.reply("Hell No!");
-};
+  interaction.reply("Hell No!")
+}

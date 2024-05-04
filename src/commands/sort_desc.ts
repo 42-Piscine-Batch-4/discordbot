@@ -1,6 +1,6 @@
-import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
+import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js"
 
-const COMMAND_NAME = "sort_desc";
+const COMMAND_NAME = "sort_desc"
 
 export const data = new SlashCommandBuilder()
   .setName(COMMAND_NAME)
@@ -10,20 +10,20 @@ export const data = new SlashCommandBuilder()
   );
 
 export const execute = async (interaction: ChatInputCommandInteraction) => {
-  const input: string = interaction.options.getString("input", true);
+  const input: string = interaction.options.getString("input", true)
   const strsplit = input
     .split(/\s/)
     .filter((c) => c)
-    .map((c) => parseInt(c));
+    .map((c) => parseInt(c))
   if (strsplit.includes(NaN)) {
-    await interaction.reply("Invalid argument: only digits!");
+    await interaction.reply("Invalid argument: only digits!")
   } else {
     const finum = strsplit
       .slice()
       .sort((a, b) => b - a)
-      .join(", ");
+      .join(", ")
     await interaction.reply(
       `Initial list:${strsplit.join(", ")}\nSorted array:${finum}`,
     );
   }
-};
+}

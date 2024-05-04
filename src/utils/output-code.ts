@@ -1,5 +1,5 @@
 const outputCode = (input: string) => {
-  return `\`\`\`${input}\`\`\``;
-};
+  return `\`\`\`${input}\`\`\``
+}
 
-export default outputCode;
+export default outputCode
