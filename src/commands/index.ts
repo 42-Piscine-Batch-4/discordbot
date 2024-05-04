@@ -36,6 +36,8 @@ import * as calc from "./calc";
 // Import the "rps" command
 import * as rps from "./rps";
 
+// Import the "display_image" command
+import * as display_image from "./display_image";
 // Import the "last" command
 import * as last from "./last";
 
@@ -56,4 +58,5 @@ export const commands = {
   calc,
   rps,
   last,
+  display_image,
 };
