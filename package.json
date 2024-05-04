@@ -8,7 +8,7 @@
     "build": "tsup src/index.ts --minify",
     "start": "node dist/index.js",
     "format": "prettier . --write",
-    "prod": "npm ci && npm run build && npm run start",
+    "prod": "npm i && npm run build && npm run start",
     "prepare": "husky install",
     "precommit": "lint-staged"
   },
