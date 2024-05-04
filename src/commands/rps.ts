@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
-import { random } from "lodash";
+import { random, size } from "lodash";
 
 const COMMAND_NAME = "rps";
 const ROCK: string = "ROCK";
@@ -10,7 +10,7 @@ export const data = new SlashCommandBuilder()
   .setName(COMMAND_NAME)
   .setDescription("Plays rock paper scissors.")
   .addStringOption((option) =>
-    option.setName("input").setDescription("raw user input.").setRequired(true),
+    option.setName("input").setDescription("raw user input.").setRequired(true)
   );
 
 const rpsToNumber = (input: string) => {
@@ -50,13 +50,8 @@ const getOutput = (username: string, user: number, com: number) => {
   }
 };
 
-interface String {
-  rpsToFullName(this: string): string;
-}
-
-String.prototype.rpsToFullName = function () {
-  if (this.length != 1) return this;
-  switch (this) {
+const rpsToFullName = (input: string) => {
+  switch (input) {
     case "R":
       return ROCK;
     case "S":
@@ -64,13 +59,13 @@ String.prototype.rpsToFullName = function () {
     case "P":
       return PAPER;
     default:
-      return this;
+      return input;
   }
 };
 
 export const execute = async (interaction: ChatInputCommandInteraction) => {
   const input: string = interaction.options.getString("input", true);
-  const rps: string = input.trim().toUpperCase().rpsToFullName();
+  const rps: string = rpsToFullName(input.trim().toUpperCase());
   if (rps != ROCK && rps != PAPER && rps != SCISSORS) {
     await interaction.reply("Input either R/P/S, or Rock/Paper/Scissors.");
   } else {
