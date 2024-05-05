@@ -6,6 +6,7 @@
  */
 
 import * as avatar from "./avatar"
+import * as caesar from "./caesar"
 import * as calc from "./calc"
 import * as dice from "./dice"
 import * as display_image from "./display_image"
@@ -23,7 +24,6 @@ import * as shout from "./shout"
 import * as sort_asc from "./sort_asc"
 import * as sort_desc from "./sort_desc"
 import * as ten_queens from "./ten_queens"
-
 /**
  * Object containing all available commands.
  * Each property corresponds to a command module.
@@ -47,4 +47,5 @@ export const commands = {
   avatar,
   palindrome,
   last,
+  caesar,
 }
