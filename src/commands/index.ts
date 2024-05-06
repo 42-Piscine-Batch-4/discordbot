@@ -5,6 +5,7 @@
  * It exports an object containing all available commands, allowing easy access to each command module.
  */
 
+import * as member_count from "./member_count"
 import * as avatar from "./avatar"
 import * as caesar from "./caesar"
 import * as calc from "./calc"
@@ -48,4 +49,5 @@ export const commands = {
   palindrome,
   last,
   caesar,
+  member_count,
 }
