@@ -5,6 +5,7 @@
  * It exports an object containing all available commands, allowing easy access to each command module.
  */
 
+import * as celsius from "./celsius"
 import * as avatar from "./avatar"
 import * as calc from "./calc"
 import * as dice from "./dice"
@@ -47,4 +48,5 @@ export const commands = {
   avatar,
   palindrome,
   last,
+  celsius,
 }
