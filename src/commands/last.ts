@@ -4,6 +4,7 @@ import {
   EmbedBuilder,
   Message,
   SlashCommandBuilder,
+  GuildMember,
   User,
 } from "discord.js"
 import capitalizeString from "../utils/capitalize-string"
@@ -53,12 +54,12 @@ const parseMessage = (inputMessage: string, opChoice: string | null) => {
 export const data = new SlashCommandBuilder()
   .setName(COMMAND_NAME)
   .setDescription(
-    `Checks the last ${SEARCH_RANGE} messages for a user's last message`
+    `Checks the last ${SEARCH_RANGE} messages for a member's last message`
   )
   .addUserOption((option) =>
     option
-      .setName("user")
-      .setDescription("Specify the User's ID")
+      .setName("member")
+      .setDescription("Specify the member's ID")
       .setRequired(false)
   )
   .addStringOption((option) =>
@@ -83,24 +84,25 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
     before: interaction.id,
   })
 
-  // Gets the target user, defaulting to sender if undefined
-  const targetUser: User =
-    interaction.options.getUser("user") || interaction.user
+  // Gets the target member, defaulting to sender if undefined
+  const targetMember: GuildMember | null =
+    interaction.options.getMember("member") as GuildMember ?? interaction.member as GuildMember
+console.log(`displaytName: ${targetMember.user.displayName}\nglobalName: ${targetMember.user.globalName}\nnickname: ${targetMember.nickname}`)
 
   // Gets the optional operation command
   const opChoice = interaction.options.getString("operation")
 
   // Finds the matched message, if any, and makes sure it's not a bot
-  const foundMessage = targetUser.bot
+  const foundMessage = targetMember.user.bot
     ? undefined
-    : findMessage(targetUser, search)
+    : findMessage(targetMember.user, search)
 
   if (!foundMessage || !foundMessage.content) {
-    if (targetUser.bot) {
+    if (targetMember.user.bot) {
       await interaction.reply(`Cannot target bot!`)
     } else {
       await interaction.reply({
-        content: `Could not find message from <@${targetUser.id}> in the last **${SEARCH_RANGE}** messages!`,
+        content: `Could not find message from <@${targetMember.user.id}> in the last **${SEARCH_RANGE}** messages!`,
         allowedMentions: { parse: [] },
       })
     }
@@ -114,7 +116,7 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
         iconURL: foundMessage.author.displayAvatarURL(),
       })
       .setDescription(
-        `At ${new Date(foundMessage.createdTimestamp).toLocaleString()}\n<@${targetUser.id}> ${finalMessage}`
+        `At ${new Date(foundMessage.createdTimestamp).toLocaleString()}\n<@${targetMember.user.id}> ${finalMessage}`
       )
     await interaction.reply({
       embeds: [embedMessage],
