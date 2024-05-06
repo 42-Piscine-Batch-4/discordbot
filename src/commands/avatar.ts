@@ -11,7 +11,5 @@ export const data = new SlashCommandBuilder()
 
 export const execute = async (interaction: ChatInputCommandInteraction) => {
   const input = interaction.options.getUser("input") ?? interaction.user
-  const avatar = input.avatarURL()
-  const user = avatar ? avatar : "User does not have an avatar."
-  await interaction.reply(user)
+  await interaction.reply(input.displayAvatarURL())
 }
