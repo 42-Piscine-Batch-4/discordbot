@@ -2,9 +2,9 @@ import {
   ChatInputCommandInteraction,
   Collection,
   EmbedBuilder,
+  GuildMember,
   Message,
   SlashCommandBuilder,
-  GuildMember,
   User,
 } from "discord.js"
 import capitalizeString from "../utils/capitalize-string"
@@ -32,20 +32,20 @@ const findMessage = (
 
 /**Adds an operation to modify the string if necessary */
 const parseMessage = (inputMessage: string, opChoice: string | null) => {
-	const prepend = `said:\n\n`;
+  const prepend = `said:\n\n`
   switch (opChoice) {
     case tagReverse:
       return `dias:\n\n${reverseString(inputMessage)}`
     case tagShout:
-      return `shouted:\n\n${capitalizeString(inputMessage)}`
-	case tagBold:
-		return `${prepend}**${inputMessage}**`
-	case tagItalics:
-		return `${prepend}*${inputMessage}*`
-	case tagStrike:
-		return `${prepend}~~${inputMessage}~~`
-	case tagSpoil:
-		return `${prepend}||${inputMessage}||`
+      return `shouted:\n\n${capitalizeString(inputMessage)}!!!`
+    case tagBold:
+      return `${prepend}**${inputMessage}**`
+    case tagItalics:
+      return `${prepend}*${inputMessage}*`
+    case tagStrike:
+      return `${prepend}~~${inputMessage}~~`
+    case tagSpoil:
+      return `${prepend}||${inputMessage}||`
     default:
       return `${prepend}${inputMessage}`
   }
@@ -70,10 +70,10 @@ export const data = new SlashCommandBuilder()
       .addChoices(
         { name: "reverse", value: tagReverse },
         { name: "shout", value: tagShout },
-		{ name: "bold", value: tagBold },
-		{ name: "italics", value: tagItalics},
-		{ name: "strikethrough", value: tagStrike},
-		{ name: "spoiler", value: tagSpoil},
+        { name: "bold", value: tagBold },
+        { name: "italics", value: tagItalics },
+        { name: "strikethrough", value: tagStrike },
+        { name: "spoiler", value: tagSpoil }
       )
   )
 
@@ -86,8 +86,8 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
 
   // Gets the target member, defaulting to sender if undefined
   const targetMember: GuildMember | null =
-    interaction.options.getMember("member") as GuildMember ?? interaction.member as GuildMember
-console.log(`displaytName: ${targetMember.user.displayName}\nglobalName: ${targetMember.user.globalName}\nnickname: ${targetMember.nickname}`)
+    (interaction.options.getMember("member") as GuildMember) ??
+    (interaction.member as GuildMember)
 
   // Gets the optional operation command
   const opChoice = interaction.options.getString("operation")
@@ -109,10 +109,11 @@ console.log(`displaytName: ${targetMember.user.displayName}\nglobalName: ${targe
   } else {
     const finalMessage = parseMessage(foundMessage.content, opChoice)
     const embedMessage = new EmbedBuilder()
-      .setTitle("Last message").setURL(foundMessage.url)
+      .setTitle("Last message")
+      .setURL(foundMessage.url)
       .setColor("Random")
       .setAuthor({
-        name: foundMessage.author.displayName,
+        name: targetMember.displayName as string,
         iconURL: foundMessage.author.displayAvatarURL(),
       })
       .setDescription(
