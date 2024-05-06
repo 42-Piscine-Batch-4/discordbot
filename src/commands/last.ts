@@ -86,7 +86,7 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
 
   // Gets the target member, defaulting to sender if undefined
   const targetMember: GuildMember | null =
-    (interaction.options.getMember("member") as GuildMember) ??
+    (interaction.options.getMember("member") as GuildMember | null) ??
     (interaction.member as GuildMember)
 
   // Gets the optional operation command
