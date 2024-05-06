@@ -1,4 +1,5 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js"
+import outputCode from "../utils/output-code"
 
 const COMMAND_NAME = "sort_desc"
 
@@ -23,7 +24,7 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
       .sort((a, b) => b - a)
       .join(", ")
     await interaction.reply(
-      `Initial list:${strsplit.join(", ")}\nSorted array:${finum}`
+      `Initial list:${outputCode(strsplit.join(", "))}\nSorted array:${outputCode(finum)}`
     )
   }
 }
