@@ -25,6 +25,7 @@ import * as rps from "./rps"
 import * as shout from "./shout"
 import * as sort_asc from "./sort_asc"
 import * as sort_desc from "./sort_desc"
+import * as temperature from "./temperature"
 import * as ten_queens from "./ten_queens"
 /**
  * Object containing all available commands.
@@ -52,4 +53,5 @@ export const commands = {
   sort_desc,
   sort_asc,
   ten_queens,
+  temperature,
 }

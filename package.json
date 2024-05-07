@@ -1,6 +1,6 @@
 {
   "name": "piscine-4-discordbot",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "More description to come!",
   "main": "src/index.ts",
   "scripts": {
@@ -9,8 +9,7 @@
     "start": "node dist/index.js",
     "format": "prettier . --write",
     "command": "tsx src/deploy-commands.ts",
-    "prod": "npm run build && npm run command && npm run start",
-    "deploy": "pm2 delete all && rm -rf node_modules package-lock.json && git pull && npm i && rm -rf package-lock.json && pm2 start ecosystem.config.js && pm2 log"
+    "prod": "npm run build && npm run command && npm run start"
   },
   "repository": {
     "type": "git",
