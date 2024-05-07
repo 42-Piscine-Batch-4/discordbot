@@ -12,7 +12,6 @@ export const data = new SlashCommandBuilder()
  */
 export const execute = async (interaction: CommandInteraction) => {
   const currentTime = new Date("GMT+0800")
-  console.log("roby -> execute -> currentTime:", currentTime)
 
   const bedTime = new Date(
     currentTime.getFullYear(),
@@ -22,7 +21,6 @@ export const execute = async (interaction: CommandInteraction) => {
     42,
     0
   )
-  console.log("roby -> execute -> bedTime:", bedTime.toString())
 
   const wakeTime = new Date(
     currentTime.getFullYear(),
@@ -32,7 +30,6 @@ export const execute = async (interaction: CommandInteraction) => {
     42,
     0
   )
-  console.log("roby -> execute -> wakeTime:", wakeTime.toString())
 
   if (currentTime < bedTime && currentTime > wakeTime) {
     interaction.reply(`It's still too early for bed!`)
