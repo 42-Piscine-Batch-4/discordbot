@@ -47,32 +47,34 @@ Before getting started, ensure you have the following installed on your machine:
 
 1. Create a `.env` file in the project's root directory (where the .gitignore file is)
 
-2. In the end. our `.env` file should look something like this:
+2. Our goal is to make our `.env` file look something like this:
 ```env
 BOT_TOKEN=someverylongstring
 CLIENT_ID=somestring
 NIGHT_API_KEY=somelongstring
 ```
 
-3. Go to https://discord.com/developers/applications and click New Application
+3. First, go to https://discord.com/developers/applications and click New Application
    
 5. You will now be in the bot application page. Under SETTINGS on the left panel, click Bot and click Reset Token.
 
 6. This will be your `BOT_TOKEN`. Copy it into your `.env` file.
 
-7. Click on OAuth2 in the left panel, you will see a `CLIENT ID`. This will be your `CLIENT_ID`. Copy it into your `.env` file.
+7. Scroll down to `Privileged Gateway Intents` and enable all the intents.
+
+8. Click on OAuth2 in the left panel, you will see a CLIENT ID. This will be your `CLIENT_ID`. Copy it into your `.env` file.
 
 9. Check the pinned messages in our Discord's #project-collaborations channel for the `NIGHT_API_KEY`, copy it into your `.env` file.
 
 12. Go back to the Discord developer page.
 
-13. Under Installation, set the `Authorization Methods` is set to `Guild Install`.
+13. Under Installation, set the Authorization Methods to Guild Install.
 
-15. Under `Install Link` on the dropdown, select `Discord Provided Link`.
+15. Under Install Link, click on the dropdown and select `Discord Provided Link`.
 
-16. Under `Default Install Settings`, set the Guild Install scopes to `applications.commands` and `bot`, with permissions set to `Administrator`.
+16. Under Default Install Settings, set the Guild Install scopes to `applications.commands` and `bot`, with permissions set to `Administrator`.
 
-17. Now use the `Install Link` to add your bot to the server!
+17. Now use the `Discord Provided Link` to add your bot to the server!
 
 ## Running the Bot
 
@@ -102,7 +104,7 @@ This will transpile the TypeScript code into JavaScript and bundle it using `tsu
    ```
 NVM:
    ```bash
-alias nvdev="nvm use --lts ; npm run commands ; npm run dev"
+alias nvrdev="nvm use --lts ; npm run commands ; npm run dev"
    ```
 
 </details>
