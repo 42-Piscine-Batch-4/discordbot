@@ -12,14 +12,11 @@ export const data = new SlashCommandBuilder()
  * @param {CommandInteraction} interaction - The interaction event triggered by the command.
  */
 export const execute = async (interaction: CommandInteraction) => {
-  const currentTime = mydayjs()
-  console.log("roby -> execute -> currentTime:", currentTime)
+  const currentTime = mydayjs().tz()
 
-  const bedTime = mydayjs(currentTime).set("hour", 23).set("minute", 42)
-  console.log("roby -> execute -> bedTime:", bedTime)
+  const bedTime = mydayjs().set("hour", 23).set("minute", 42)
 
-  const wakeTime = mydayjs(currentTime).set("hour", 7).set("minute", 42)
-  console.log("roby -> execute -> wakeTime:", wakeTime)
+  const wakeTime = mydayjs().set("hour", 7).set("minute", 42)
 
   if (currentTime < bedTime && currentTime > wakeTime) {
     interaction.reply(`It's still too early for bed!`)
