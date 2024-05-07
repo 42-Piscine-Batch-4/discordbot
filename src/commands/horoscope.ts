@@ -2,7 +2,6 @@ import axios from "axios"
 import { ChatInputCommandInteraction, SlashCommandBuilder, EmbedBuilder } from "discord.js"
 import capitalizeFirstLetter from "../utils/capitalize-first-letter"
 
-
 const COMMAND_NAME = "horoscope"
 
 export const data = new SlashCommandBuilder()
@@ -63,7 +62,7 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
       .setColor("Random")
       .setDescription(`${msgPeriod}\n${response.data.data.horoscope_data}`)
 
-    await interaction.reply({embeds: [embedMessage]})
+    await interaction.reply({ embeds: [embedMessage] })
   } catch (err) {
     await interaction.reply(`Oops something went wrong.`)
   }
