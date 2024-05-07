@@ -1,4 +1,5 @@
 import { CommandInteraction, SlashCommandBuilder } from "discord.js"
+import mydayjs from "../utils/dayjs"
 
 const COMMAND_NAME = "bedtime"
 
@@ -11,25 +12,14 @@ export const data = new SlashCommandBuilder()
  * @param {CommandInteraction} interaction - The interaction event triggered by the command.
  */
 export const execute = async (interaction: CommandInteraction) => {
-  const currentTime = new Date("GMT+0800")
+  const currentTime = mydayjs()
+  console.log("roby -> execute -> currentTime:", currentTime)
 
-  const bedTime = new Date(
-    currentTime.getFullYear(),
-    currentTime.getMonth(),
-    currentTime.getDate(),
-    23,
-    42,
-    0
-  )
+  const bedTime = mydayjs(currentTime).set("hour", 23).set("minute", 42)
+  console.log("roby -> execute -> bedTime:", bedTime)
 
-  const wakeTime = new Date(
-    currentTime.getFullYear(),
-    currentTime.getMonth(),
-    currentTime.getDate(),
-    7,
-    42,
-    0
-  )
+  const wakeTime = mydayjs(currentTime).set("hour", 7).set("minute", 42)
+  console.log("roby -> execute -> wakeTime:", wakeTime)
 
   if (currentTime < bedTime && currentTime > wakeTime) {
     interaction.reply(`It's still too early for bed!`)
