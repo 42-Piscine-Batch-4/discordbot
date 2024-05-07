@@ -5,6 +5,7 @@
  * It exports an object containing all available commands, allowing easy access to each command module.
  */
 
+import * as temperature from "./temperature"
 import * as avatar from "./avatar"
 import * as bedtime from "./bedtime"
 import * as caesar from "./caesar"
@@ -52,4 +53,5 @@ export const commands = {
   sort_desc,
   sort_asc,
   ten_queens,
+  temperature,
 }

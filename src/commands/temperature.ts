@@ -37,7 +37,7 @@ export const data = new SlashCommandBuilder()
   )
 
 export const execute = async (interaction: ChatInputCommandInteraction) => {
-  const temperature = interaction.options.getNumber("temperature", true)
+  const temperature = interaction.options.getNumber("value", true)
   const fromScale = interaction.options.getString("from-scale", true)
   const toScale = interaction.options.getString("to-scale", true)
 
