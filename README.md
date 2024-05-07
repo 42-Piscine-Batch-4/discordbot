@@ -17,7 +17,7 @@ Before getting started, ensure you have the following installed on your machine:
 
 <summary>Installing via NVM</summary>
    
-   - After installing nvm [NVM install link](https://github.com/nvm-sh/nvm/) from run:
+   - After [installing nvm](https://github.com/nvm-sh/nvm/), run:
      
      - `nvm install --lts`
      - `nvm use --lts`
@@ -47,34 +47,37 @@ Before getting started, ensure you have the following installed on your machine:
 
 1. Create a `.env` file in the project's root directory (where the .gitignore file is)
 
-2. Our goal is to make our `.env` file look something like this:
+2. Our goal is to make the `.env` file look something like this:
+
 ```env
-BOT_TOKEN=someverylongstring
-CLIENT_ID=somestring
-NIGHT_API_KEY=somelongstring
+BOT_TOKEN=SOMEVERYLONGSTRING
+CLIENT_ID=SOMEVERYLONGSTRING
+NIGHT_API_KEY=SOMEVERYLONGSTRING
 ```
 
-3. First, go to https://discord.com/developers/applications and click New Application
-   
-5. You will now be in the bot application page. Under SETTINGS on the left panel, click Bot and click Reset Token.
+3. To get the values, first go to the [application developer portal](https://discord.com/developers/applications) and click on "New Application".
+4. You will now be in the bot application page. Under "SETTINGS" on the left panel, click "Bot" and click "Reset Token".
 
-6. This will be your `BOT_TOKEN`. Copy it into your `.env` file.
+5. This will be your `BOT_TOKEN`. Copy it into your `.env` file.
 
-7. Scroll down to `Privileged Gateway Intents` and enable all the intents.
+6. Scroll down to `Privileged Gateway Intents` and enable everything inside.
 
-8. Click on OAuth2 in the left panel, you will see a CLIENT ID. This will be your `CLIENT_ID`. Copy it into your `.env` file.
+7. Click on OAuth2 in the left panel. You will find your `CLIENT_ID` under "Client Information". Copy it into your `.env` file.
 
-9. Check the pinned messages in our Discord's #project-collaborations channel for the `NIGHT_API_KEY`, copy it into your `.env` file.
+8. Check the pinned messages in our Discord's project channel for the `NIGHT_API_KEY`, then copy it into your `.env` file.
 
-12. Go back to the Discord developer page.
+9. Go back to the Discord developer page.
 
-13. Under Installation, set the Authorization Methods to Guild Install.
+10. Under Installation, set the Authorization Methods to Guild Install.
 
-15. Under Install Link, click on the dropdown and select `Discord Provided Link`.
+11. Under Install Link, click on the dropdown and select `Discord Provided Link`.
 
-16. Under Default Install Settings, set the Guild Install scopes to `applications.commands` and `bot`, with permissions set to `Administrator`.
+12. Under Default Install Settings, set the Guild Install scopes to `applications.commands` and `bot`, with permissions set to `Administrator`.
 
-17. Now use the `Discord Provided Link` to add your bot to the server!
+13. Now use the `Discord Provided Link` to add your bot to the server!
+
+> [!NOTE]
+> Do not share the contents in your `.env` file!
 
 ## Running the Bot
 
@@ -97,15 +100,19 @@ You will just need to run `npm run command` on your terminal, and it will refres
 This will transpile the TypeScript code into JavaScript and bundle it using `tsup`.
 
 <details>
-   <summary>Sample aliases</summary>
+   <summary>[Alias examples]</summary>
    
-   ```bash
-   alias rdev="npm run command ; npm run dev"
-   ```
+This will make your life easier:
+
+```bash
+alias rdev="npm run command ; npm run dev"
+```
+
 NVM:
-   ```bash
+
+```bash
 alias nvrdev="nvm use --lts ; npm run commands ; npm run dev"
-   ```
+```
 
 </details>
 
