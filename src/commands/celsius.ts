@@ -1,4 +1,4 @@
-import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
+import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js"
 
 export const data = new SlashCommandBuilder()
   .setName("temperature")
@@ -12,7 +12,9 @@ export const data = new SlashCommandBuilder()
   .addStringOption((option) =>
     option
       .setName("from-scale")
-      .setDescription("Original temperature scale (Celsius, Kelvin or Fahrenheit)")
+      .setDescription(
+        "Original temperature scale (Celsius, Kelvin or Fahrenheit)"
+      )
       .setRequired(true)
       .addChoices(
         { name: "Celsius", value: "Celsius" },
@@ -23,27 +25,31 @@ export const data = new SlashCommandBuilder()
   .addStringOption((option) =>
     option
       .setName("to-scale")
-      .setDescription("Target temperature scale (Celsius, Kelvin or Fahrenheit)")
+      .setDescription(
+        "Target temperature scale (Celsius, Kelvin or Fahrenheit)"
+      )
       .setRequired(true)
       .addChoices(
         { name: "Celsius", value: "Celsius" },
         { name: "Kelvin", value: "Kelvin" },
         { name: "Fahrenheit", value: "Fahrenheit" }
       )
-  );
+  )
 
 export const execute = async (interaction: ChatInputCommandInteraction) => {
-  const temperature = interaction.options.getNumber("temperature", true);
-  const fromScale = interaction.options.getString("from-scale", true);
-  const toScale = interaction.options.getString("to-scale", true);
+  const temperature = interaction.options.getNumber("temperature", true)
+  const fromScale = interaction.options.getString("from-scale", true)
+  const toScale = interaction.options.getString("to-scale", true)
 
   if (
     fromScale.toLowerCase() !== "celsius" &&
     fromScale.toLowerCase() !== "kelvin" &&
     fromScale.toLowerCase() !== "fahrenheit"
   ) {
-    await interaction.reply("Invalid original temperature scale. Choose Celsius, Kelvin or Fahrenheit.");
-    return;
+    await interaction.reply(
+      "Invalid original temperature scale. Choose Celsius, Kelvin or Fahrenheit."
+    )
+    return
   }
 
   if (
@@ -51,36 +57,44 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
     toScale.toLowerCase() !== "kelvin" &&
     toScale.toLowerCase() !== "fahrenheit"
   ) {
-    await interaction.reply("Invalid target temperature scale. Choose Celsius, Kelvin or Fahrenheit.");
-    return;
+    await interaction.reply(
+      "Invalid target temperature scale. Choose Celsius, Kelvin or Fahrenheit."
+    )
+    return
   }
 
-  const convertedTemp = convertTemperature(temperature, fromScale, toScale);
-  await interaction.reply(`${temperature.toFixed(2)}°${fromScale} is equal to ${convertedTemp.toFixed(2)}°${toScale}`);
-};
+  const convertedTemp = convertTemperature(temperature, fromScale, toScale)
+  await interaction.reply(
+    `${temperature.toFixed(2)}°${fromScale} is equal to ${convertedTemp.toFixed(2)}°${toScale}`
+  )
+}
 
-const convertTemperature = (temp: number, fromScale: string, toScale: string): number => {
-    const celsiusTemp = (() => {
-      switch (fromScale.toLowerCase()) {
-        case "celsius":
-          return temp;
-        case "kelvin":
-          return temp - 273.15;
-        case "fahrenheit":
-          return (temp - 32) * (5 / 9);
-        default:
-          throw new Error("Invalid temperature scale.");
-      }
-    })();
-  
-    switch (toScale.toLowerCase()) {
+const convertTemperature = (
+  temp: number,
+  fromScale: string,
+  toScale: string
+): number => {
+  const celsiusTemp = (() => {
+    switch (fromScale.toLowerCase()) {
       case "celsius":
-        return celsiusTemp;
+        return temp
       case "kelvin":
-        return celsiusTemp + 273.15;
+        return temp - 273.15
       case "fahrenheit":
-        return celsiusTemp * (9 / 5) + 32;
+        return (temp - 32) * (5 / 9)
       default:
-        throw new Error("Invalid temperature scale.");
+        throw new Error("Invalid temperature scale.")
     }
-  };
+  })()
+
+  switch (toScale.toLowerCase()) {
+    case "celsius":
+      return celsiusTemp
+    case "kelvin":
+      return celsiusTemp + 273.15
+    case "fahrenheit":
+      return celsiusTemp * (9 / 5) + 32
+    default:
+      throw new Error("Invalid temperature scale.")
+  }
+}
