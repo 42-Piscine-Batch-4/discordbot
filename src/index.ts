@@ -1,7 +1,6 @@
-import { Client, Guild } from "discord.js"
+import { Client } from "discord.js"
 import { commands } from "./commands"
 import { config } from "./config"
-import { deployCommands } from "./deploy-commands"
 
 // Create a new Discord client instance
 const client = new Client({
@@ -11,15 +10,6 @@ const client = new Client({
 // Log a message when the bot is ready
 client.once("ready", () => {
   console.log("This bot is ready Pisciners!")
-})
-
-/**
- * Deploy commands to a newly joined guild.
- * @param {Guild} guild - The guild that the bot has been added to.
- * @returns {Promise<void>} A Promise that resolves once the commands are deployed.
- */
-client.on("guildCreate", async (guild: Guild): Promise<void> => {
-  await deployCommands({ guildId: guild.id })
 })
 
 /**
