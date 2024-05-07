@@ -44,6 +44,8 @@ Before getting started, ensure you have the following installed on your machine:
 
    4. Click OAuth2 in the left panel and copy CLIENT ID into CLIENT_ID in .env.
 
+   6. Remember to add NIGHT_API_KEY below BOT_TOKEN with the value provided in the Discord (check pinned!)
+
    5. Under OAuth2 URL Generator, select bot and applications.commands.
 
    6. A section called BOT PERMISSIONS will now appear below. Select Administrator under GENERAL PERMISSIONS and copy the link below in section GENERATED URL.
