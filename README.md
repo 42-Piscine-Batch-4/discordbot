@@ -33,7 +33,27 @@ Before getting started, ensure you have the following installed on your machine:
    npm install
    ```
 
-4. Download the `.env` file from our [environments repository](https://github.com/42-Piscine-Batch-4/environments) in our organization. Place the `.env` file in the root directory of the project.
+4. Create the .env file on your own with this method! (Thanks @rbd03!)
+
+   ```
+   1. Go to https://discord.com/developers/applications and click New Application
+
+   2. You will now be in the bot application page. Under SETTINGS on the left panel, click Bot and click Reset Token.
+
+   3. Copy the token, which will now appear, to BOT_TOKEN in the .env file that was provided.
+
+   4. Click OAuth2 in the left panel and copy CLIENT ID into CLIENT_ID in .env.
+
+   5. Under OAuth2 URL Generator, select bot and applications.commands.
+
+   6. A section called BOT PERMISSIONS will now appear below. Select Administrator under GENERAL PERMISSIONS and copy the link below in section GENERATED URL.
+
+   7. Now run npm run dev in your terminal first, then message the link to your server, pin it and click on it. This should add the bot to your server.
+
+   8. The slash commands should exist since npm run dev was run first, but if it isn't just kick the bot and add it again.
+
+   9. Every time you want to add a new command, kick the bot and add it back with the link you sent to the server. If your changes are not showing, always try the above first.
+   ```
 
 ## Running the Bot
 
