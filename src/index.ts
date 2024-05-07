@@ -36,3 +36,13 @@ client.on("interactionCreate", async (interaction): Promise<void> => {
 
 // Log in to Discord using the bot token
 client.login(config.BOT_TOKEN)
+
+process.on("SIGINT", () => {
+  console.log("Exiting app...")
+  process.exit()
+})
+
+process.on("SIGTERM", () => {
+  console.log("Exiting app...")
+  process.exit()
+})
