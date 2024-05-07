@@ -4,10 +4,12 @@
  * This file serves as the entry point for accessing all commands within the "commands" folder.
  * It exports an object containing all available commands, allowing easy access to each command module.
  */
+
 import * as avatar from "./avatar"
 import * as bedtime from "./bedtime"
 import * as caesar from "./caesar"
 import * as calc from "./calc"
+import * as celsius from "./celsius"
 import * as dice from "./dice"
 import * as display_image from "./display_image"
 import * as echo from "./echo"
@@ -50,5 +52,6 @@ export const commands = {
   shout,
   sort_desc,
   sort_asc,
-  ten_queens
+  ten_queens,
+  celsius,
 }

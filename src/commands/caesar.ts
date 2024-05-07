@@ -31,8 +31,8 @@ const cipherConvert = (char: string, cchar: number, cnum: number): number => {
 export const execute = async (interaction: ChatInputCommandInteraction) => {
   const message = interaction.options.getString("message", true)
   const cipher = interaction.options.getNumber("cipher") ?? 0
-  const cchar = (26 + cipher % 26) % 26
-  const cnum = (10 + cipher % 10) % 10
+  const cchar = (26 + (cipher % 26)) % 26
+  const cnum = (10 + (cipher % 10)) % 10
   const output = Array.from(message)
     .map((c) => String.fromCharCode(cipherConvert(c, cchar, cnum)))
     .join("")
