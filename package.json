@@ -10,7 +10,7 @@
     "format": "prettier . --write",
     "command": "tsx src/deploy-commands.ts",
     "prod": "npm run build && npm run commands && npm run start",
-    "deploy": "rm -rf node_modules package-lock.json && npm i "
+    "deploy": "rm -rf node_modules package-lock.json && npm i && rm -rf package-lock.json"
   },
   "repository": {
     "type": "git",
