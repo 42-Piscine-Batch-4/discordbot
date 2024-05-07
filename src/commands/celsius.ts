@@ -1,73 +1,86 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
 
 export const data = new SlashCommandBuilder()
-  .setName("celsius")
-  .setDescription("Convert temperature to or from Celsius")
-  .addIntegerOption((option) =>
+  .setName("temperature")
+  .setDescription("Convert temperature between different scales")
+  .addNumberOption((option) =>
     option
-      .setName("temperature-integer")
-      .setDescription("Integer part of the temperature value")
-      .setRequired(true)
-  )
-  .addIntegerOption((option) =>
-    option
-      .setName("temperature-decimal")
-      .setDescription("Decimal part of the temperature value")
+      .setName("value")
+      .setDescription("Temperature value")
       .setRequired(true)
   )
   .addStringOption((option) =>
     option
       .setName("from-scale")
-      .setDescription("Original temperature scale (Kelvin or Fahrenheit)")
+      .setDescription("Original temperature scale (Celsius, Kelvin or Fahrenheit)")
       .setRequired(true)
       .addChoices(
+        { name: "Celsius", value: "Celsius" },
         { name: "Kelvin", value: "Kelvin" },
         { name: "Fahrenheit", value: "Fahrenheit" }
       )
   )
-  .addBooleanOption((option) =>
+  .addStringOption((option) =>
     option
-      .setName("reverse")
-      .setDescription(
-        "Reverse the conversion (from Celsius instead of to Celsius)"
+      .setName("to-scale")
+      .setDescription("Target temperature scale (Celsius, Kelvin or Fahrenheit)")
+      .setRequired(true)
+      .addChoices(
+        { name: "Celsius", value: "Celsius" },
+        { name: "Kelvin", value: "Kelvin" },
+        { name: "Fahrenheit", value: "Fahrenheit" }
       )
   );
 
 export const execute = async (interaction: ChatInputCommandInteraction) => {
-  const temperatureInteger = interaction.options.getInteger("temperature-integer", true);
-  const temperatureDecimal = interaction.options.getInteger("temperature-decimal", true);
-  const temperature = parseFloat(`${temperatureInteger}.${temperatureDecimal.toFixed(2)}`);
+  const temperature = interaction.options.getNumber("temperature", true);
   const fromScale = interaction.options.getString("from-scale", true);
-  const reverse = interaction.options.getBoolean("reverse") || false;
+  const toScale = interaction.options.getString("to-scale", true);
 
-  if (fromScale.toLowerCase() !== "kelvin" && fromScale.toLowerCase() !== "fahrenheit") {
-    await interaction.reply("Invalid temperature scale. Choose either Kelvin or Fahrenheit.");
+  if (
+    fromScale.toLowerCase() !== "celsius" &&
+    fromScale.toLowerCase() !== "kelvin" &&
+    fromScale.toLowerCase() !== "fahrenheit"
+  ) {
+    await interaction.reply("Invalid original temperature scale. Choose Celsius, Kelvin or Fahrenheit.");
     return;
   }
 
-  const convertedTemp = convertTemperature(temperature, fromScale, "Celsius", reverse);
-
-  if (reverse) {
-    await interaction.reply(`${temperature.toFixed(2)}°Celsius is equal to ${convertedTemp.toFixed(2)}°${fromScale}`);
-  } else {
-    await interaction.reply(`${temperature.toFixed(2)}°${fromScale} is equal to ${convertedTemp.toFixed(2)}°Celsius`);
+  if (
+    toScale.toLowerCase() !== "celsius" &&
+    toScale.toLowerCase() !== "kelvin" &&
+    toScale.toLowerCase() !== "fahrenheit"
+  ) {
+    await interaction.reply("Invalid target temperature scale. Choose Celsius, Kelvin or Fahrenheit.");
+    return;
   }
+
+  const convertedTemp = convertTemperature(temperature, fromScale, toScale);
+  await interaction.reply(`${temperature.toFixed(2)}°${fromScale} is equal to ${convertedTemp.toFixed(2)}°${toScale}`);
 };
 
-function convertTemperature(temp: number, fromScale: string, toScale: string, reverse: boolean = false): number {
-  if (fromScale === "Kelvin") {
-    if (reverse) {
-      return temp + 273.15;
-    } else {
-      return temp - 273.15;
+const convertTemperature = (temp: number, fromScale: string, toScale: string): number => {
+    const celsiusTemp = (() => {
+      switch (fromScale.toLowerCase()) {
+        case "celsius":
+          return temp;
+        case "kelvin":
+          return temp - 273.15;
+        case "fahrenheit":
+          return (temp - 32) * (5 / 9);
+        default:
+          throw new Error("Invalid temperature scale.");
+      }
+    })();
+  
+    switch (toScale.toLowerCase()) {
+      case "celsius":
+        return celsiusTemp;
+      case "kelvin":
+        return celsiusTemp + 273.15;
+      case "fahrenheit":
+        return celsiusTemp * (9 / 5) + 32;
+      default:
+        throw new Error("Invalid temperature scale.");
     }
-  } else if (fromScale === "Fahrenheit") {
-    if (reverse) {
-      return (temp * 9 / 5) + 32; 
-    } else {
-      return (temp - 32) * 5 / 9;
-    }
-  } else {
-    return temp;
-  }
-}
+  };
