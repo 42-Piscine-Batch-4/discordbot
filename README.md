@@ -33,7 +33,27 @@ Before getting started, ensure you have the following installed on your machine:
    npm install
    ```
 
-4. Download the `.env` file from our [environments repository](https://github.com/42-Piscine-Batch-4/environments) in our organization. Place the `.env` file in the root directory of the project.
+4. Create the .env file on your own with this method! (Thanks @rbd03!)
+
+   ```
+   1. Go to https://discord.com/developers/applications and click New Application
+
+   2. You will now be in the bot application page. Under SETTINGS on the left panel, click Bot and click Reset Token.
+
+   3. Copy the token, which will now appear, to BOT_TOKEN in the .env file that was provided.
+
+   4. Click OAuth2 in the left panel and copy CLIENT ID into CLIENT_ID in .env.
+
+   6. Remember to add NIGHT_API_KEY below BOT_TOKEN with the value provided in the Discord (check pinned!)
+
+   7. Under Installation, make sure the Authorization Methods are set to `Guild Install`.
+
+   8. Under install link, on the dropdown, select `Discord Provided Link`.
+
+   9. Then default install settings, make sure the Guild Install scopes are `applications.commands` and `bot` and for permissions, set it ot `Administrator`.
+
+   10. Now copy the link in the Install Link section and add your bot!
+   ```
 
 ## Running the Bot
 
@@ -47,13 +67,11 @@ This will start the bot using `tsx` to watch for changes in the `src/index.ts` f
 
 You will not have to recompile or exit the terminal when making changes, just save your files and your changes should reflect.
 
-## Building for Production
+## Okay I have finished developing, how do I test it?
 
-To build the bot for production, use the following command:
+The command `npm run command` is provided in `package.json`.
 
-```bash
-npm run build
-```
+You will just need to run `npm run command` on your terminal, and it will refresh the commands of the application.
 
 This will transpile the TypeScript code into JavaScript and bundle it using `tsup`.
 
