@@ -13,6 +13,16 @@ Before getting started, ensure you have the following installed on your machine:
 - [Node.js](https://nodejs.org/) (version 16.x or higher)
 - [npm](https://www.npmjs.com/) (usually comes with Node.js installation)
 
+<details>
+
+<summary>Installing via NVM</summary>
+   
+   - After installing nvm [NVM install link](https://github.com/nvm-sh/nvm/) from run:
+     
+     - `nvm install --lts`
+     - `nvm use --lts`
+</details>
+
 ## Installation
 
 1. Clone this repository to your local machine:
@@ -33,27 +43,36 @@ Before getting started, ensure you have the following installed on your machine:
    npm install
    ```
 
-4. Create the .env file on your own with this method! (Thanks @rbd03!)
+#### Setting up the environmental variables
 
-   ```
-   1. Go to https://discord.com/developers/applications and click New Application
+1. Create a `.env` file in the project's root directory (where the .gitignore file is)
 
-   2. You will now be in the bot application page. Under SETTINGS on the left panel, click Bot and click Reset Token.
+2. In the end. our `.env` file should look something like this:
+```env
+BOT_TOKEN=someverylongstring
+CLIENT_ID=somestring
+NIGHT_API_KEY=somelongstring
+```
 
-   3. Copy the token, which will now appear, to BOT_TOKEN in the .env file that was provided.
+3. Go to https://discord.com/developers/applications and click New Application
+   
+5. You will now be in the bot application page. Under SETTINGS on the left panel, click Bot and click Reset Token.
 
-   4. Click OAuth2 in the left panel and copy CLIENT ID into CLIENT_ID in .env.
+6. This will be your `BOT_TOKEN`. Copy it into your `.env` file.
 
-   6. Remember to add NIGHT_API_KEY below BOT_TOKEN with the value provided in the Discord (check pinned!)
+7. Click on OAuth2 in the left panel, you will see a `CLIENT ID`. This will be your `CLIENT_ID`. Copy it into your `.env` file.
 
-   7. Under Installation, make sure the Authorization Methods are set to `Guild Install`.
+9. Check the pinned messages in our Discord's #project-collaborations channel for the `NIGHT_API_KEY`, copy it into your `.env` file.
 
-   8. Under install link, on the dropdown, select `Discord Provided Link`.
+12. Go back to the Discord developer page.
 
-   9. Then default install settings, make sure the Guild Install scopes are `applications.commands` and `bot` and for permissions, set it ot `Administrator`.
+13. Under Installation, set the `Authorization Methods` is set to `Guild Install`.
 
-   10. Now copy the link in the Install Link section and add your bot!
-   ```
+15. Under `Install Link` on the dropdown, select `Discord Provided Link`.
+
+16. Under `Default Install Settings`, set the Guild Install scopes to `applications.commands` and `bot`, with permissions set to `Administrator`.
+
+17. Now use the `Install Link` to add your bot to the server!
 
 ## Running the Bot
 
@@ -74,6 +93,19 @@ The command `npm run command` is provided in `package.json`.
 You will just need to run `npm run command` on your terminal, and it will refresh the commands of the application.
 
 This will transpile the TypeScript code into JavaScript and bundle it using `tsup`.
+
+<details>
+   <summary>Sample aliases</summary>
+   
+   ```bash
+   alias rdev="npm run command ; npm run dev"
+   ```
+NVM:
+   ```bash
+alias nvdev="nvm use --lts ; npm run commands ; npm run dev"
+   ```
+
+</details>
 
 ## Usage
 
@@ -113,7 +145,7 @@ npm install
 - Run the bot in development mode using the following command:
 
   ```bash
-  npm run dev
+  npm run command ; npm run dev
   ```
 
 - Test your changes thoroughly to ensure they work as expected. Interact with the bot in your Discord server to verify the functionality of your changes.
