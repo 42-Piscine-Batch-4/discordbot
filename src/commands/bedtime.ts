@@ -14,9 +14,9 @@ export const data = new SlashCommandBuilder()
 export const execute = async (interaction: CommandInteraction) => {
   const currentTime = mydayjs().tz()
 
-  const bedTime = mydayjs().set("hour", 23).set("minute", 42)
+  const bedTime = mydayjs().tz().set("hour", 23).set("minute", 42)
 
-  const wakeTime = mydayjs().set("hour", 7).set("minute", 42)
+  const wakeTime = mydayjs().tz().set("hour", 7).set("minute", 42)
 
   if (currentTime < bedTime && currentTime > wakeTime) {
     interaction.reply(`It's still too early for bed!`)
