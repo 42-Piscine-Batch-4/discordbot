@@ -11,8 +11,8 @@ export const data = new SlashCommandBuilder()
  * @param {CommandInteraction} interaction - The interaction event triggered by the command.
  */
 export const execute = async (interaction: CommandInteraction) => {
-  const currentTime = new Date()
-  console.log("roby -> execute -> currentTime:", currentTime.toString())
+  const currentTime = new Date("GMT+0800")
+  console.log("roby -> execute -> currentTime:", currentTime)
 
   const bedTime = new Date(
     currentTime.getFullYear(),
