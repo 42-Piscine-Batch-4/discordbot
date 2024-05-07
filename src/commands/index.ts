@@ -5,7 +5,6 @@
  * It exports an object containing all available commands, allowing easy access to each command module.
  */
 
-import * as temperature from "./temperature"
 import * as avatar from "./avatar"
 import * as bedtime from "./bedtime"
 import * as caesar from "./caesar"
@@ -26,6 +25,7 @@ import * as rps from "./rps"
 import * as shout from "./shout"
 import * as sort_asc from "./sort_asc"
 import * as sort_desc from "./sort_desc"
+import * as temperature from "./temperature"
 import * as ten_queens from "./ten_queens"
 /**
  * Object containing all available commands.
