@@ -14,6 +14,7 @@ import * as echo from "./echo"
 import * as fetch from "./fetch"
 import * as hamster from "./hamster"
 import * as honkai_gacha from "./honkai_gacha"
+import * as horoscope from "./horoscope"
 import * as icon_42 from "./icon_42"
 import * as last from "./last"
 import * as member_count from "./member_count"
@@ -40,6 +41,7 @@ export const commands = {
   fetch,
   hamster,
   honkai_gacha,
+  horoscope,
   icon_42,
   last,
   member_count,
