@@ -46,15 +46,13 @@ Before getting started, ensure you have the following installed on your machine:
 
    6. Remember to add NIGHT_API_KEY below BOT_TOKEN with the value provided in the Discord (check pinned!)
 
-   5. Under OAuth2 URL Generator, select bot and applications.commands.
+   7. Under Installation, make sure the Authorization Methods are set to `Guild Install`.
 
-   6. A section called BOT PERMISSIONS will now appear below. Select Administrator under GENERAL PERMISSIONS and copy the link below in section GENERATED URL.
+   8. Under install link, on the dropdown, select `Discord Provided Link`.
 
-   7. Now run npm run dev in your terminal first, then message the link to your server, pin it and click on it. This should add the bot to your server.
+   9. Then default install settings, make sure the Guild Install scopes are `applications.commands` and `bot` and for permissions, set it ot `Administrator`.
 
-   8. The slash commands should exist since npm run dev was run first, but if it isn't just kick the bot and add it again.
-
-   9. Every time you want to add a new command, kick the bot and add it back with the link you sent to the server. If your changes are not showing, always try the above first.
+   10. Now copy the link in the Install Link section and add your bot!
    ```
 
 ## Running the Bot
@@ -69,13 +67,11 @@ This will start the bot using `tsx` to watch for changes in the `src/index.ts` f
 
 You will not have to recompile or exit the terminal when making changes, just save your files and your changes should reflect.
 
-## Building for Production
+## Okay I have finished developing, how do I test it?
 
-To build the bot for production, use the following command:
+The command `npm run command` is provided in `package.json`.
 
-```bash
-npm run build
-```
+You will just need to run `npm run command` on your terminal, and it will refresh the commands of the application.
 
 This will transpile the TypeScript code into JavaScript and bundle it using `tsup`.
 

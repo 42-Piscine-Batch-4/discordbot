@@ -8,7 +8,8 @@
     "build": "tsup src/index.ts --minify",
     "start": "node dist/index.js",
     "format": "prettier . --write",
-    "prod": "npm run build && npm run start"
+    "commands": "tsx src/deploy-commands.ts",
+    "prod": "npm run build && npm run commands && npm run start"
   },
   "repository": {
     "type": "git",
