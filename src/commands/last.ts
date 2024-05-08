@@ -7,7 +7,10 @@ import {
   SlashCommandBuilder,
   User,
 } from "discord.js"
+
+import altCaps from "../utils/alt-capitalize-string"
 import capitalizeString from "../utils/capitalize-string"
+import { formatTime } from "../utils/dayjs"
 import reverseString from "../utils/reverse-string"
 
 const COMMAND_NAME = "last"
@@ -15,6 +18,7 @@ const SEARCH_RANGE = 100
 
 const tagReverse = "rev"
 const tagShout = "shout"
+const tagAlt = "altcaps"
 const tagBold = "bold"
 const tagItalics = "italics"
 const tagStrike = "strikethrough"
@@ -38,6 +42,8 @@ const parseMessage = (inputMessage: string, opChoice: string | null) => {
       return `dias:\n\n${reverseString(inputMessage)}`
     case tagShout:
       return `shouted:\n\n${capitalizeString(inputMessage)}!!!`
+    case tagAlt:
+      return `${prepend}${altCaps(inputMessage)}`
     case tagBold:
       return `${prepend}**${inputMessage}**`
     case tagItalics:
@@ -70,6 +76,7 @@ export const data = new SlashCommandBuilder()
       .addChoices(
         { name: "reverse", value: tagReverse },
         { name: "shout", value: tagShout },
+        { name: "altcaps", value: tagAlt },
         { name: "bold", value: tagBold },
         { name: "italics", value: tagItalics },
         { name: "strikethrough", value: tagStrike },
@@ -117,7 +124,7 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
         iconURL: foundMessage.author.displayAvatarURL(),
       })
       .setDescription(
-        `At ${new Date(foundMessage.createdTimestamp).toLocaleString()}\n<@${targetMember.user.id}> ${finalMessage}`
+        `At ${formatTime(foundMessage.createdTimestamp)}\n<@${targetMember.user.id}> ${finalMessage}`
       )
     await interaction.reply({
       embeds: [embedMessage],
