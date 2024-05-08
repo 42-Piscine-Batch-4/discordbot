@@ -5,8 +5,36 @@ import {
   SlashCommandBuilder,
 } from "discord.js"
 import capitalizeFirstLetter from "../utils/capitalize-first-letter"
+import formatString from "../utils/format-string"
 
 const COMMAND_NAME = "horoscope"
+const HOROSCOPE_BASE_URL =
+  "https://horoscope-app-api.vercel.app/api/v1/get-horoscope"
+const SIGN_ICONS = {
+  aries: "♈",
+  taurus: "♉",
+  gemini: "♊",
+  cancer: "♋",
+  leo: "♌",
+  virgo: "♍",
+  libra: "♎",
+  scorpio: "♏",
+  sagittarius: "♐",
+  capricorn: "♑",
+  aquarius: "♒",
+  pisces: "♓",
+}
+
+const removeHeader = (text: string): string => {
+  const monthNames =
+    "January|February|March|April|May|June|July|August|September|October|November|December"
+  const regexPattern = new RegExp(
+    `(${monthNames})\\s+Premium\\s+Horoscope`,
+    "gi"
+  )
+
+  return text.replace(regexPattern, "")
+}
 
 export const data = new SlashCommandBuilder()
   .setName(COMMAND_NAME)
@@ -47,12 +75,12 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
   try {
     const period = interaction.options.getString("period", true)
     const sign = interaction.options.getString("sign", true)
-    const BASE_URL =
+    const horoscope_url =
       period == "daily"
-        ? `https://horoscope-app-api.vercel.app/api/v1/get-horoscope/${period}?sign=${sign}&day=TODAY`
-        : `https://horoscope-app-api.vercel.app/api/v1/get-horoscope/${period}?sign=${sign}`
+        ? HOROSCOPE_BASE_URL + `/${period}?sign=${sign}&day=TODAY`
+        : HOROSCOPE_BASE_URL + `/${period}?sign=${sign}`
 
-    const response = await axios({ method: "get", url: BASE_URL })
+    const response = await axios({ method: "get", url: horoscope_url })
 
     if (!response.data.success) {
       throw new Error("Failed to fetch horoscope data")
@@ -67,9 +95,13 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
     }
 
     const embedMessage = new EmbedBuilder()
-      .setTitle(`${capitalizeFirstLetter(sign)} Horoscope`)
-      .setColor("Random")
-      .setDescription(`${msgPeriod}\n${response.data.data.horoscope_data}`)
+      .setTitle(
+        `${SIGN_ICONS[sign as keyof typeof SIGN_ICONS]} ${capitalizeFirstLetter(sign)} Horoscope`
+      )
+      .setColor("Purple")
+      .setDescription(
+        `${msgPeriod}\n${formatString(removeHeader(response.data.data.horoscope_data))}`
+      )
 
     await interaction.reply({ embeds: [embedMessage] })
   } catch (err) {
