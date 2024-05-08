@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/42-Piscine-Batch-4/discordbot#readme",
   "dependencies": {
+    "@discordjs/voice": "^0.17.0",
     "@types/lodash": "^4.17.0",
     "a-calc": "^1.3.12",
     "axios": "^1.6.8",
@@ -35,7 +36,9 @@
     "discord.js": "^14.14.1",
     "dotenv": "^16.4.5",
     "lodash": "^4.17.21",
-    "night-api": "^1.3.0"
+    "night-api": "^1.3.0",
+    "sodium": "^3.0.2",
+    "ytdl-core": "^4.11.5"
   },
   "devDependencies": {
     "prettier": "3.2.5",
