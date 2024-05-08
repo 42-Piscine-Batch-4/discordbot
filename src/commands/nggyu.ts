@@ -1,5 +1,5 @@
 import {
-    AudioPlayerStatus,
+  AudioPlayerStatus,
   createAudioPlayer,
   createAudioResource,
   joinVoiceChannel,
@@ -16,7 +16,7 @@ const COMMAND_NAME = "nggyu"
 
 export const data = new SlashCommandBuilder()
   .setName(COMMAND_NAME)
-  .setDescription("!")
+  .setDescription("Please be in a voice channel before invoking this command")
 
 export const execute = async (interaction: ChatInputCommandInteraction) => {
   const stream = ytdl("https://www.youtube.com/watch?v=dQw4w9WgXcQ", {
@@ -33,11 +33,12 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
         guildId: channel.guild.id,
         adapterCreator: channel.guild.voiceAdapterCreator,
       })
+      await interaction.reply("Get ready...")
       connection.subscribe(player)
       player.play(resource)
       client.on("voiceStateUpdate", (_, newState) => {
         if (newState.channelId == null) {
-          if (!((member as GuildMember).voice.channel)) {
+          if (!(member as GuildMember).voice.channel) {
             connection.disconnect()
           }
         }
@@ -45,6 +46,10 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
       player.on(AudioPlayerStatus.Idle, () => {
         connection.disconnect()
       })
+    } else {
+      await interaction.reply("You need to be in a voice channel!")
     }
+  } else {
+    await interaction.reply("Unable to find user!")
   }
 }
