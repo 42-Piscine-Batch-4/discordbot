@@ -19,6 +19,7 @@ import * as horoscope from "./horoscope"
 import * as icon_42 from "./icon_42"
 import * as last from "./last"
 import * as member_count from "./member_count"
+import * as nggyu from "./nggyu"
 import * as palindrome from "./palindrome"
 import * as ping from "./ping"
 import * as rev from "./rev"
@@ -28,6 +29,7 @@ import * as sort_asc from "./sort_asc"
 import * as sort_desc from "./sort_desc"
 import * as temperature from "./temperature"
 import * as ten_queens from "./ten_queens"
+
 /**
  * Object containing all available commands.
  * Each property corresponds to a command module.
@@ -56,4 +58,5 @@ export const commands = {
   sort_asc,
   ten_queens,
   temperature,
+  nggyu,
 }
