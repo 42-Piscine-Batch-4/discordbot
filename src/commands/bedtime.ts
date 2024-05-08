@@ -12,8 +12,12 @@ const endTime: Time = { hour: 7, minute: 42 }
 export const data = new SlashCommandBuilder()
   .setName(COMMAND_NAME)
   .setDescription("Checks if it's bedtime")
-  .addBooleanOption((option) =>
-    option.setName("defy").setDescription("Defies bedtime").setRequired(false)
+  .addStringOption((option) =>
+    option
+      .setName("defy")
+      .setDescription("Defies bedtime")
+      .setRequired(false)
+      .addChoices({ name: "defy", value: "defy bedtime" })
   )
 
 export const execute = async (interaction: ChatInputCommandInteraction) => {
@@ -29,18 +33,28 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
     .set("hour", endTime.hour)
     .set("minute", endTime.minute)
 
-  if (currentTime < bedTime && currentTime > wakeTime) {
+  /**
+   * This is not accounting properly for past-midnight checks
+   */
+  const isBedTime =
+    (currentTime.isAfter(bedTime) && currentTime.isBefore(wakeTime)) ||
+    (currentTime.isAfter(wakeTime) &&
+      currentTime.isBefore(bedTime.add(1, "day")))
+
+  if (!isBedTime) {
+    const hoursDiff = Math.abs(currentTime.diff(bedTime, "hours"))
+    const minutesDiff = Math.abs(currentTime.diff(bedTime, "minutes") % 60)
     interaction.reply(
-      `It's still ${Math.abs(currentTime.hour() - bedTime.hour())} hours and ${Math.abs(currentTime.minute() - bedTime.minute())} minutes before bed!`
+      `It's still ${hoursDiff <= 1 ? (hoursDiff === 0 ? "" : hoursDiff + " hour and ") : hoursDiff + " hours and "}${minutesDiff} minutes before bed!`
     )
   } else {
-    if (interaction.options.getBoolean("defy")) {
+    if (interaction.options.getString("defy")) {
       interaction.reply(
-        `It's past ${startTime.hour % 12}:${startTime.minute} pm but I don't care!!!`
+        `It's past ${bedTime.hour() % 12}:${bedTime.minute()} ${bedTime.hour() > 12 ? "pm" : "am"} but I don't care!!!`
       )
     } else {
       interaction.reply(
-        `It's past ${startTime.hour % 12}:${startTime.minute} pm, time to sleep.`
+        `It's past ${bedTime.hour() % 12}:${bedTime.minute()} ${bedTime.hour() > 12 ? "pm" : "am"}, time to sleep.`
       )
     }
   }
