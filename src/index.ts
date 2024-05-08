@@ -4,7 +4,7 @@ import { config } from "./config"
 
 // Create a new Discord client instance
 const client = new Client({
-  intents: ["Guilds", "GuildMessages", "DirectMessages"],
+  intents: ["Guilds", "GuildMessages", "DirectMessages", "GuildVoiceStates"],
 })
 
 // Log a message when the bot is ready
@@ -46,3 +46,5 @@ process.on("SIGTERM", () => {
   console.log("Exiting app...")
   process.exit()
 })
+
+export default client
