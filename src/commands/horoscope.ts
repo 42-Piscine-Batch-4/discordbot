@@ -29,7 +29,8 @@ const removeHeader = (text: string): string => {
   const monthNames =
     "January|February|March|April|May|June|July|August|September|October|November|December"
   const regexPattern = new RegExp(
-    `(${monthNames})\\s+Premium\\s+Horoscope`, 'gi'
+    `(${monthNames})\\s+Premium\\s+Horoscope`,
+    "gi"
   )
 
   return text.replace(regexPattern, "")
