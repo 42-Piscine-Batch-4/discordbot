@@ -36,7 +36,9 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
       player.play(resource)
       client.on("voiceStateUpdate", (_, newState) => {
         if (newState.channelId == null) {
-          connection.disconnect()
+          if (!((member as GuildMember).voice.channel)) {
+            connection.disconnect()
+          }
         }
       })
     }
