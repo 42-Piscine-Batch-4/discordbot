@@ -5,6 +5,7 @@ import {
   SlashCommandBuilder,
 } from "discord.js"
 import capitalizeFirstLetter from "../utils/capitalize-first-letter"
+import formatString from "../utils/format-string"
 
 const COMMAND_NAME = "horoscope"
 
@@ -69,7 +70,7 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
     const embedMessage = new EmbedBuilder()
       .setTitle(`${capitalizeFirstLetter(sign)} Horoscope`)
       .setColor("Random")
-      .setDescription(`${msgPeriod}\n${response.data.data.horoscope_data}`)
+      .setDescription(`${msgPeriod}\n${formatString(response.data.data.horoscope_data)}`)
 
     await interaction.reply({ embeds: [embedMessage] })
   } catch (err) {
