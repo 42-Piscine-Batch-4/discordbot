@@ -10,7 +10,7 @@ import {
   SlashCommandBuilder,
 } from "discord.js"
 import ytdl from "ytdl-core"
-import client from "../index"
+import client from "../client"
 
 const COMMAND_NAME = "nggyu"
 

@@ -1,11 +1,6 @@
-import { Client } from "discord.js"
+import client from "./client"
 import { commands } from "./commands"
 import { config } from "./config"
-
-// Create a new Discord client instance
-const client = new Client({
-  intents: ["Guilds", "GuildMessages", "DirectMessages", "GuildVoiceStates"],
-})
 
 // Log a message when the bot is ready
 client.once("ready", () => {
