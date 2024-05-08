@@ -1,4 +1,5 @@
 import {
+    AudioPlayerStatus,
   createAudioPlayer,
   createAudioResource,
   joinVoiceChannel,
@@ -40,6 +41,9 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
             connection.disconnect()
           }
         }
+      })
+      player.on(AudioPlayerStatus.Idle, () => {
+        connection.disconnect()
       })
     }
   }
