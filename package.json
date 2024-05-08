@@ -34,8 +34,7 @@
     "dayjs": "^1.11.11",
     "discord.js": "^14.14.1",
     "dotenv": "^16.4.5",
-    "lodash": "^4.17.21",
-    "night-api": "^1.3.0"
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "prettier": "3.2.5",

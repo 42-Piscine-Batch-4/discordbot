@@ -6,4 +6,10 @@ mydayjs.extend(timezone)
 mydayjs.extend(utc)
 mydayjs.tz.setDefault("Asia/Singapore")
 
-export default mydayjs
+/** Takes a Unix timestamp and formats it with our default timezone (Asia/Singapore)
+ */
+const formatTime = (date: number) => {
+  return mydayjs(date).format("D MMM YYYY, hh:mm A")
+}
+
+export { mydayjs as default, formatTime }
