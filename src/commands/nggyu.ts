@@ -15,7 +15,7 @@ const COMMAND_NAME = "nggyu"
 
 export const data = new SlashCommandBuilder()
   .setName(COMMAND_NAME)
-  .setDescription("Adds the bot to voice channel and plays NGGYU.")
+  .setDescription("!")
 
 export const execute = async (interaction: ChatInputCommandInteraction) => {
   const stream = ytdl("https://www.youtube.com/watch?v=dQw4w9WgXcQ", {
@@ -41,5 +41,4 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
       })
     }
   }
-  await interaction.reply("Invalid command!")
 }
