@@ -33,6 +33,10 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
     .set("hour", endTime.hour)
     .set("minute", endTime.minute)
 
+  if (bedTime > wakeTime) {
+    wakeTime.add(1, "day")
+  }
+
   const isBedTime = !(
     currentTime.isAfter(wakeTime) && currentTime.isBefore(bedTime.add(1, "day"))
   )
