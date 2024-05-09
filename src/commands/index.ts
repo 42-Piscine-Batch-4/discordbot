@@ -23,6 +23,7 @@ import * as shout from "./shout"
 import * as sort_asc from "./sort_asc"
 import * as sort_desc from "./sort_desc"
 import * as ten_queens from "./ten_queens"
+import * as currency from "./currency"
 
 /**
  * Object containing all available commands.
@@ -47,4 +48,5 @@ export const commands = {
   avatar,
   palindrome,
   last,
+  currency,
 }
