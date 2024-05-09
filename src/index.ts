@@ -1,25 +1,10 @@
-import { Client, Guild } from "discord.js"
+import client from "./client"
 import { commands } from "./commands"
 import { config } from "./config"
-import { deployCommands } from "./deploy-commands"
-
-// Create a new Discord client instance
-const client = new Client({
-  intents: ["Guilds", "GuildMessages", "DirectMessages"],
-})
 
 // Log a message when the bot is ready
 client.once("ready", () => {
   console.log("This bot is ready Pisciners!")
-})
-
-/**
- * Deploy commands to a newly joined guild.
- * @param {Guild} guild - The guild that the bot has been added to.
- * @returns {Promise<void>} A Promise that resolves once the commands are deployed.
- */
-client.on("guildCreate", async (guild: Guild): Promise<void> => {
-  await deployCommands({ guildId: guild.id })
 })
 
 /**
@@ -46,3 +31,15 @@ client.on("interactionCreate", async (interaction): Promise<void> => {
 
 // Log in to Discord using the bot token
 client.login(config.BOT_TOKEN)
+
+process.on("SIGINT", () => {
+  console.log("Exiting app...")
+  process.exit()
+})
+
+process.on("SIGTERM", () => {
+  console.log("Exiting app...")
+  process.exit()
+})
+
+export default client

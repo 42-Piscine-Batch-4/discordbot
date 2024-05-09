@@ -2,11 +2,15 @@ import {
   ChatInputCommandInteraction,
   Collection,
   EmbedBuilder,
+  GuildMember,
   Message,
   SlashCommandBuilder,
   User,
 } from "discord.js"
+
+import altCaps from "../utils/alt-capitalize-string"
 import capitalizeString from "../utils/capitalize-string"
+import { formatTime } from "../utils/dayjs"
 import reverseString from "../utils/reverse-string"
 
 const COMMAND_NAME = "last"
@@ -14,6 +18,7 @@ const SEARCH_RANGE = 100
 
 const tagReverse = "rev"
 const tagShout = "shout"
+const tagAlt = "altcaps"
 const tagBold = "bold"
 const tagItalics = "italics"
 const tagStrike = "strikethrough"
@@ -31,20 +36,22 @@ const findMessage = (
 
 /**Adds an operation to modify the string if necessary */
 const parseMessage = (inputMessage: string, opChoice: string | null) => {
-	const prepend = `said:\n\n`;
+  const prepend = `said:\n\n`
   switch (opChoice) {
     case tagReverse:
       return `dias:\n\n${reverseString(inputMessage)}`
     case tagShout:
-      return `shouted:\n\n${capitalizeString(inputMessage)}`
-	case tagBold:
-		return `${prepend}**${inputMessage}**`
-	case tagItalics:
-		return `${prepend}*${inputMessage}*`
-	case tagStrike:
-		return `${prepend}~~${inputMessage}~~`
-	case tagSpoil:
-		return `${prepend}||${inputMessage}||`
+      return `shouted:\n\n${capitalizeString(inputMessage)}!!!`
+    case tagAlt:
+      return `${prepend}${altCaps(inputMessage)}`
+    case tagBold:
+      return `${prepend}**${inputMessage}**`
+    case tagItalics:
+      return `${prepend}*${inputMessage}*`
+    case tagStrike:
+      return `${prepend}~~${inputMessage}~~`
+    case tagSpoil:
+      return `${prepend}||${inputMessage}||`
     default:
       return `${prepend}${inputMessage}`
   }
@@ -53,12 +60,12 @@ const parseMessage = (inputMessage: string, opChoice: string | null) => {
 export const data = new SlashCommandBuilder()
   .setName(COMMAND_NAME)
   .setDescription(
-    `Checks the last ${SEARCH_RANGE} messages for a user's last message`
+    `Checks the last ${SEARCH_RANGE} messages for a member's last message`
   )
   .addUserOption((option) =>
     option
-      .setName("user")
-      .setDescription("Specify the User's ID")
+      .setName("member")
+      .setDescription("Specify the member's ID")
       .setRequired(false)
   )
   .addStringOption((option) =>
@@ -69,10 +76,11 @@ export const data = new SlashCommandBuilder()
       .addChoices(
         { name: "reverse", value: tagReverse },
         { name: "shout", value: tagShout },
-		{ name: "bold", value: tagBold },
-		{ name: "italics", value: tagItalics},
-		{ name: "strikethrough", value: tagStrike},
-		{ name: "spoiler", value: tagSpoil},
+        { name: "altcaps", value: tagAlt },
+        { name: "bold", value: tagBold },
+        { name: "italics", value: tagItalics },
+        { name: "strikethrough", value: tagStrike },
+        { name: "spoiler", value: tagSpoil }
       )
   )
 
@@ -83,38 +91,40 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
     before: interaction.id,
   })
 
-  // Gets the target user, defaulting to sender if undefined
-  const targetUser: User =
-    interaction.options.getUser("user") || interaction.user
+  // Gets the target member, defaulting to sender if undefined
+  const targetMember: GuildMember | null =
+    (interaction.options.getMember("member") as GuildMember | null) ??
+    (interaction.member as GuildMember)
 
   // Gets the optional operation command
   const opChoice = interaction.options.getString("operation")
 
   // Finds the matched message, if any, and makes sure it's not a bot
-  const foundMessage = targetUser.bot
+  const foundMessage = targetMember.user.bot
     ? undefined
-    : findMessage(targetUser, search)
+    : findMessage(targetMember.user, search)
 
   if (!foundMessage || !foundMessage.content) {
-    if (targetUser.bot) {
+    if (targetMember.user.bot) {
       await interaction.reply(`Cannot target bot!`)
     } else {
       await interaction.reply({
-        content: `Could not find message from <@${targetUser.id}> in the last **${SEARCH_RANGE}** messages!`,
+        content: `Could not find message from <@${targetMember.user.id}> in the last **${SEARCH_RANGE}** messages!`,
         allowedMentions: { parse: [] },
       })
     }
   } else {
     const finalMessage = parseMessage(foundMessage.content, opChoice)
     const embedMessage = new EmbedBuilder()
-      .setTitle("Last message").setURL(foundMessage.url)
+      .setTitle("Last message")
+      .setURL(foundMessage.url)
       .setColor("Random")
       .setAuthor({
-        name: foundMessage.author.displayName,
+        name: targetMember.displayName as string,
         iconURL: foundMessage.author.displayAvatarURL(),
       })
       .setDescription(
-        `At ${new Date(foundMessage.createdTimestamp).toLocaleString()}\n<@${targetUser.id}> ${finalMessage}`
+        `At ${formatTime(foundMessage.createdTimestamp)}\n<@${targetMember.user.id}> ${finalMessage}`
       )
     await interaction.reply({
       embeds: [embedMessage],

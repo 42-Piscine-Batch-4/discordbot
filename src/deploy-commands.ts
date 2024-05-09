@@ -23,27 +23,16 @@ const commandsData = map(values(commands), (command) => {
 const rest = new REST({ version: "10" }).setToken(config.BOT_TOKEN)
 
 /**
- * Represents the properties required for deploying commands to a guild.
- */
-type DeployCommandProps = {
-  guildId: string // The ID of the guild where commands will be deployed
-}
-
-/**
  * Deploys the application commands to a specific guild.
  * @param {DeployCommandProps} props - The properties required for deploying commands.
  * @returns {Promise<void>} A Promise that resolves once the commands are deployed successfully.
  */
-export const deployCommands = async (
-  props: DeployCommandProps
-): Promise<void> => {
-  const { guildId } = props
-
+export const deployCommands = async (): Promise<void> => {
   try {
     console.log("Started refreshing application's (/) commands.")
 
     // Update the guild's commands with the latest data
-    await rest.put(Routes.applicationGuildCommands(config.CLIENT_ID, guildId), {
+    await rest.put(Routes.applicationCommands(config.CLIENT_ID), {
       body: commandsData,
     })
 
@@ -52,3 +41,5 @@ export const deployCommands = async (
     console.error(error)
   }
 }
+
+deployCommands()

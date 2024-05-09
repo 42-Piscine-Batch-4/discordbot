@@ -6,6 +6,8 @@
  */
 
 import * as avatar from "./avatar"
+import * as bedtime from "./bedtime"
+import * as caesar from "./caesar"
 import * as calc from "./calc"
 import * as dice from "./dice"
 import * as display_image from "./display_image"
@@ -13,8 +15,11 @@ import * as echo from "./echo"
 import * as fetch from "./fetch"
 import * as hamster from "./hamster"
 import * as honkai_gacha from "./honkai_gacha"
+import * as horoscope from "./horoscope"
 import * as icon_42 from "./icon_42"
 import * as last from "./last"
+import * as member_count from "./member_count"
+import * as nggyu from "./nggyu"
 import * as palindrome from "./palindrome"
 import * as ping from "./ping"
 import * as rev from "./rev"
@@ -22,6 +27,7 @@ import * as rps from "./rps"
 import * as shout from "./shout"
 import * as sort_asc from "./sort_asc"
 import * as sort_desc from "./sort_desc"
+import * as temperature from "./temperature"
 import * as ten_queens from "./ten_queens"
 import * as currency from "./currency"
 
@@ -30,23 +36,28 @@ import * as currency from "./currency"
  * Each property corresponds to a command module.
  */
 export const commands = {
+  avatar,
+  bedtime,
+  caesar,
+  calc,
+  dice,
+  display_image,
   echo,
   fetch,
   hamster,
+  honkai_gacha,
+  horoscope,
+  icon_42,
+  last,
+  member_count,
+  palindrome,
   ping,
   rev,
+  rps,
+  shout,
   sort_desc,
   sort_asc,
   ten_queens,
-  dice,
-  shout,
-  calc,
-  rps,
-  icon_42,
-  display_image,
-  honkai_gacha,
-  avatar,
-  palindrome,
-  last,
-  currency,
+  temperature,
+  nggyu,
 }
