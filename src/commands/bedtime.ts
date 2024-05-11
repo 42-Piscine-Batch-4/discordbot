@@ -6,7 +6,7 @@ const COMMAND_NAME = "bedtime"
 // Sets the start and end timings here for easier access in future
 type Time = { day: number; hour: number; minute: number }
 const startTime: Time = { day: 1, hour: 0, minute: 0 }
-const endTime: Time = { day: 1, hour: 7, minute: 0 }
+const endTime: Time = { day: 1, hour: 8, minute: 0 }
 
 export const data = new SlashCommandBuilder()
   .setName(COMMAND_NAME)
