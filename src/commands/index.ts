@@ -9,10 +9,12 @@ import * as avatar from "./avatar"
 import * as bedtime from "./bedtime"
 import * as caesar from "./caesar"
 import * as calc from "./calc"
+import * as currency from "./currency"
 import * as dice from "./dice"
 import * as display_image from "./display_image"
 import * as echo from "./echo"
 import * as fetch from "./fetch"
+import * as find_members from "./find_members"
 import * as hamster from "./hamster"
 import * as honkai_gacha from "./honkai_gacha"
 import * as horoscope from "./horoscope"
@@ -39,24 +41,26 @@ export const commands = {
   bedtime,
   caesar,
   calc,
+  currency,
   dice,
   display_image,
   echo,
   fetch,
+  find_members,
   hamster,
   honkai_gacha,
   horoscope,
   icon_42,
   last,
   member_count,
+  nggyu,
   palindrome,
   ping,
   rev,
   rps,
   shout,
-  sort_desc,
   sort_asc,
+  sort_desc,
   ten_queens,
   temperature,
-  nggyu,
 }
