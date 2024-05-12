@@ -76,7 +76,9 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
   const currencyTo = response.fields
     .getTextInputValue("currencyTo")
     .toUpperCase()
-  const amtInDollars = response.fields.getTextInputValue("amount")
+  const amtInDollars = response.fields
+    .getTextInputValue("amount")
+    .replace(/[,_ ]/g, "")
 
   let error = ""
   const fromCheck = validateCurrencyCode(currencyFrom)
@@ -102,13 +104,13 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
   if (error !== "") {
     response.reply({ content: error })
   } else {
-    const conversionAmt = await converter.convert(
+    const conversionAmt: number = await converter.convert(
       amount,
       currencyFrom,
       currencyTo
     )
     response.reply({
-      content: `$${amount} in ${currencyFrom} is $${String(conversionAmt.toFixed(2))} in ${currencyTo}`,
+      content: `${amount} in ${currencyFrom} is ${conversionAmt.toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 })} in ${currencyTo}`,
     })
   }
 }
