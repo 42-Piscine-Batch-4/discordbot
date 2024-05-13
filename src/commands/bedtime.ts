@@ -14,6 +14,7 @@ const timeClass = (
   targetTime: Time
 ): { time: Dayjs; hmDiff: { hours: number; minutes: number } } => {
   const time = mydayjs()
+    .tz()
     .set("hour", targetTime.hour)
     .set("minute", targetTime.minute)
     .add(targetTime.day, "day")
@@ -36,7 +37,7 @@ export const data = new SlashCommandBuilder()
   )
 
 export const execute = async (interaction: ChatInputCommandInteraction) => {
-  const currentTime = mydayjs()
+  const currentTime = mydayjs().tz()
   const bedTime = timeClass(currentTime, startTime)
   const wakeTime = timeClass(currentTime, endTime)
 
