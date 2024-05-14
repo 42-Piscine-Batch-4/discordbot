@@ -24,6 +24,7 @@ import * as member_count from "./member_count"
 import * as nggyu from "./nggyu"
 import * as palindrome from "./palindrome"
 import * as ping from "./ping"
+import * as random_string from "./random_string"
 import * as rev from "./rev"
 import * as rps from "./rps"
 import * as shout from "./shout"
@@ -58,6 +59,7 @@ export const commands = {
   ping,
   rev,
   rps,
+  random_string,
   shout,
   sort_asc,
   sort_desc,
