@@ -10,6 +10,7 @@ import * as bedtime from "./bedtime"
 import * as caesar from "./caesar"
 import * as calc from "./calc"
 import * as currency from "./currency"
+import * as coinflip from "./coinflip"
 import * as dice from "./dice"
 import * as display_image from "./display_image"
 import * as echo from "./echo"
@@ -42,6 +43,7 @@ export const commands = {
   caesar,
   calc,
   currency,
+  coinflip,
   dice,
   display_image,
   echo,
