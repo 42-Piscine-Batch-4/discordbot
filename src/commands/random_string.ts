@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js"
-import { isInteger } from "lodash"
+import { isEmpty, isInteger } from "lodash"
 import { generatePrintable } from "../utils/generate-printable"
 import { isNumeric } from "../utils/is-numeric"
 
@@ -29,8 +29,9 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
   if (length < 0) error.push("Length is not positive.")
   if (isNumeric(length_string) && !isInteger(length))
     error.push("Length cannot be floating point.")
+  if (length > 1500) error.push("Length cannot be more than 1500")
 
-  if (error) {
+  if (!isEmpty(error)) {
     await interaction.reply({
       content: `**List of errors**: ${error.join(" ")}`,
     })
