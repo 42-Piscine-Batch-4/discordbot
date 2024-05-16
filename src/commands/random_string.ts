@@ -18,19 +18,22 @@ const s = generatePrintable()
 
 export const execute = async (interaction: ChatInputCommandInteraction) => {
   //save input to length variable
-  let length = interaction.options.getString(OPTION_NAME, true)
+  let length_string = interaction.options.getString(OPTION_NAME, true)
 
-  let error = ""
+  let error = []
   let str = ""
 
   // check if length is only positive numbers, not floats or chars
-  if (!isNumeric(length)) error = "Length is not numeric."
-  length = Number(length)
-  if (length < 0) error = "Length is not positive."
-  if (!isInteger(length)) error = "Length cannot be floating point."
+  if (!isNumeric(length_string)) error.push("Length is not numeric.")
+  let length = Number(length_string)
+  if (length < 0) error.push("Length is not positive.")
+  if (isNumeric(length_string) && !isInteger(length))
+    error.push("Length cannot be floating point.")
 
   if (error) {
-    await interaction.reply({ content: error })
+    await interaction.reply({
+      content: `**List of errors**: ${error.join(" ")}`,
+    })
   } else {
     // generate the random string using Math.random
     for (let i = 0; i < length; i++) {
