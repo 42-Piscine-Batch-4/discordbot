@@ -8,11 +8,10 @@ import {
   TextInputStyle,
 } from "discord.js"
 import validateCurrencyCode from "validate-currency-code"
+import { isNumeric } from "../utils/is-numeric"
 const converter = require("currency-exchanger-js")
 
 const COMMAND_NAME = "currency"
-
-const isNumeric = (n: any) => !isNaN(parseFloat(n)) && isFinite(n)
 
 export const data = new SlashCommandBuilder()
   .setName(COMMAND_NAME)
